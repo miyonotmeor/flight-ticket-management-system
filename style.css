@@ -519,6 +519,66 @@ nav ul li a:hover{
 }
 
 /* =========================
+   FLIGHT RESULTS PAGE
+========================= */
+
+.results-container{
+    width:90%;
+    max-width:1200px;
+    margin:120px auto 50px;
+}
+
+.summary-card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom:40px;
+    line-height:1.6;
+}
+
+.results-title{
+    text-align:center;
+    font-size:32px;
+    margin-bottom:40px;
+}
+
+.results-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+}
+
+.result-card{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.result-card:hover{
+    transform:translateY(-5px);
+}
+
+.result-card h3{
+    color:#0d47a1;
+    margin-bottom:20px;
+}
+
+.result-card p{
+    margin-bottom:8px;
+}
+
+.flight-price{
+    color:#0d47a1;
+    font-size:32px;
+    font-weight:bold;
+    margin:20px 0;
+}
+
+/* =========================
    FOOTER
 ========================= */
 
