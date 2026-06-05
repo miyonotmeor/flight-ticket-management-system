@@ -225,6 +225,19 @@ nav ul li a:hover{
 }
 
 /* =========================
+   INDEX PAGE
+========================= */
+
+.search-box,
+.destinations{
+    flex-shrink:0;
+}
+
+.destinations{
+    margin-bottom:auto;
+}
+
+/* =========================
    LOGIN PAGE
 ========================= */
 
