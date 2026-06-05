@@ -525,7 +525,10 @@ nav ul li a:hover{
 .results-container{
     width:90%;
     max-width:1200px;
-    margin:120px auto 50px;
+    margin-top:170px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:50px;
 }
 
 .summary-card{
