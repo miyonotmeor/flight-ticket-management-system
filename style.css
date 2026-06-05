@@ -519,101 +519,15 @@ nav ul li a:hover{
 }
 
 /* =========================
-   FLIGHT RESULTS PAGE
-========================= */
-
-.results-section{
-    flex:1;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding-top:120px;
-    padding-bottom:20px;
-    padding-left:20px;
-    padding-right:20px;
-}
-
-.results-container{
-    width:100%;
-    max-width:1200px;
-}
-
-.search-summary{
-    background:#f8fafc;
-    border:1px solid #e5e7eb;
-    border-radius:12px;
-    padding:25px;
-    margin-bottom:35px;
-}
-
-.search-summary h3{
-    color:#0d47a1;
-    margin-bottom:20px;
-    text-align:center;
-}
-
-.summary-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:15px;
-}
-
-.summary-item{
-    background:white;
-    border-radius:10px;
-    padding:15px;
-    text-align:center;
-    box-shadow:0 3px 10px rgba(0,0,0,0.05);
-}
-
-.summary-item span{
-    display:block;
-    color:#6b7280;
-    font-size:14px;
-    margin-bottom:8px;
-}
-
-.summary-item strong{
-    color:#1d1d1f;
-    font-size:16px;
-}
-
-.results-title{
-    text-align:center;
-    font-size:32px;
-    margin-bottom:30px;
-}
-
-.results-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:25px;
-}
-
-.result-card{
-    background:white;
-    padding:30px;
-    border-radius:15px;
-    text-align:center;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
-}
-
-.flight-price{
-    font-size:20px;
-    font-weight:bold;
-    color:#0d47a1;
-    margin:20px 0;
-}
-
-/* =========================
    BOOKING CONFIRMATION
 ========================= */
 
 .booking-top{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:20px;
+    gap:25px;
     margin-bottom:25px;
+    align-items:start;
 }
 
 .search-summary{
@@ -626,23 +540,33 @@ nav ul li a:hover{
 .search-summary h3{
     color:#0d47a1;
     margin-bottom:15px;
+    text-align:center;
 }
 
 .summary-grid{
     display:grid;
+    grid-template-columns:repeat(2,1fr);
     gap:12px;
 }
 
 .summary-item{
     background:white;
-    padding:12px;
-    border-radius:8px;
+    padding:15px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 3px 8px rgba(0,0,0,0.08);
+
+    min-height:95px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
 }
 
 .summary-item span{
     display:block;
     color:#666;
     font-size:14px;
+    margin-bottom:8px;
 }
 
 .summary-item strong{
