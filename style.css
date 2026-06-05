@@ -454,6 +454,19 @@ nav ul li a:hover{
 }
 
 /* =========================
+   BACK BUTTON
+========================= */
+
+.back-btn,
+.logout-btn{
+    justify-self:end;
+    display:inline-flex;
+    align-items:center;
+    width:fit-content;
+    white-space:nowrap;
+}
+
+/* =========================
    FOOTER
 ========================= */
 
