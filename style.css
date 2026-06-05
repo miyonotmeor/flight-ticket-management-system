@@ -522,13 +522,20 @@ nav ul li a:hover{
    FLIGHT RESULTS PAGE
 ========================= */
 
+.results-section{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding-top:120px;
+    padding-bottom:20px;
+    padding-left:20px;
+    padding-right:20px;
+}
+
 .results-container{
-    width:90%;
+    width:100%;
     max-width:1200px;
-    margin-top:170px;
-    margin-left:auto;
-    margin-right:auto;
-    margin-bottom:50px;
 }
 
 .summary-card{
@@ -536,14 +543,13 @@ nav ul li a:hover{
     padding:25px;
     border-radius:15px;
     box-shadow:0 5px 15px rgba(0,0,0,0.1);
-    margin-bottom:40px;
-    line-height:1.6;
+    margin-bottom:30px;
 }
 
 .results-title{
     text-align:center;
     font-size:32px;
-    margin-bottom:40px;
+    margin-bottom:30px;
 }
 
 .results-grid{
@@ -558,26 +564,12 @@ nav ul li a:hover{
     border-radius:15px;
     text-align:center;
     box-shadow:0 5px 15px rgba(0,0,0,0.1);
-    transition:0.3s;
-}
-
-.result-card:hover{
-    transform:translateY(-5px);
-}
-
-.result-card h3{
-    color:#0d47a1;
-    margin-bottom:20px;
-}
-
-.result-card p{
-    margin-bottom:8px;
 }
 
 .flight-price{
-    color:#0d47a1;
-    font-size:32px;
+    font-size:20px;
     font-weight:bold;
+    color:#0d47a1;
     margin:20px 0;
 }
 
