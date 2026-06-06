@@ -44,24 +44,23 @@
 
         <div class="summary-item">
             <span>Route</span>
-            <strong>Kuala Lumpur → Singapore</strong>
+            <strong id="routeDisplay"></strong>
         </div>
 
         <div class="summary-item">
             <span>Departure</span>
-            <strong>15 June 2026</strong>
+            <strong id="departureDisplay"></strong>
         </div>
 
         <div class="summary-item">
             <span>Return</span>
-            <strong>20 June 2026</strong>
+            <strong id="returnDisplay"></strong>
         </div>
 
         <div class="summary-item">
             <span>Passengers</span>
-            <strong>1 Passenger</strong>
+            <strong id="passengerDisplay"></strong>
         </div>
-
         </div>
 
         </div>
@@ -126,5 +125,23 @@
     © 2026 SkyBook Flight Ticket Management System
 </footer>
 
+<script>
+
+document.getElementById("routeDisplay").textContent =
+localStorage.getItem("departureCity") +
+" → " +
+localStorage.getItem("destinationCity");
+
+document.getElementById("departureDisplay").textContent =
+localStorage.getItem("departureDate");
+
+document.getElementById("returnDisplay").textContent =
+localStorage.getItem("returnDate");
+
+document.getElementById("passengerDisplay").textContent =
+localStorage.getItem("passengers");
+
+</script>
+    
 </body>
 </html>
