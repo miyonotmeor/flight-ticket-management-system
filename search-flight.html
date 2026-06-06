@@ -58,17 +58,17 @@
 
         <div class="form-group">
             <label>Departure Date</label>
-            <input type="date">
+            <input type="date" id="departureDate">
         </div>
 
         <div class="form-group">
             <label>Return Date</label>
-            <input type="date">
+            <input type="date" id="returnDate">
         </div>
 
         <div class="form-group">
             <label>Passengers</label>
-            <select>
+            <select id="passengers">
                 <option>1 Passenger</option>
                 <option>2 Passengers</option>
                 <option>3 Passengers</option>
@@ -76,7 +76,7 @@
             </select>
         </div>
 
-        <a href="flight-results.html" class="search-btn">
+        <a href="#" class="search-btn" onclick="searchFlight()">
             Search Flight
         </a>
 
@@ -88,5 +88,39 @@
     © 2026 SkyBook Flight Ticket Management System
 </footer>
 
+<script>
+
+function searchFlight(){
+
+    localStorage.setItem(
+        "departureCity",
+        document.getElementById("departureCity").value
+    );
+
+    localStorage.setItem(
+        "destinationCity",
+        document.getElementById("destinationCity").value
+    );
+
+    localStorage.setItem(
+        "departureDate",
+        document.getElementById("departureDate").value
+    );
+
+    localStorage.setItem(
+        "returnDate",
+        document.getElementById("returnDate").value
+    );
+
+    localStorage.setItem(
+        "passengers",
+        document.getElementById("passengers").value
+    );
+
+    window.location.href = "flight-results.html";
+}
+
+</script>
+    
 </body>
 </html>
