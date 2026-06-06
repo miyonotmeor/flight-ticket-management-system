@@ -78,9 +78,16 @@
 
                 <h3>RM129</h3>
 
-                <a href="booking-confirmation.html" class="card-btn">
-                Book Now
+                <a href="#"
+                   class="card-btn"
+                   onclick="selectFlight(
+                   'AirAsia AK123',
+                   '08:00 AM - 09:10 AM',
+                   'RM129'
+                     )">
+                    Book Now
                 </a>
+                
             </div>
 
             <div class="card">
@@ -140,6 +147,20 @@ localStorage.getItem("returnDate");
 
 document.getElementById("passengerDisplay").textContent =
 localStorage.getItem("passengers");
+
+</script>
+
+<script>
+
+function selectFlight(airline,time,price){
+
+    localStorage.setItem("selectedAirline", airline);
+    localStorage.setItem("selectedTime", time);
+    localStorage.setItem("selectedPrice", price);
+
+    window.location.href = "booking-confirmation.html";
+
+}
 
 </script>
     
