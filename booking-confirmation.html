@@ -121,5 +121,48 @@
     © 2026 SkyBook Flight Ticket Management System
 </footer>
 
+<script>
+
+// Selected Flight
+document.getElementById("airlineDisplay").textContent =
+localStorage.getItem("selectedAirline");
+
+document.getElementById("routeDisplay").textContent =
+localStorage.getItem("departureCity") +
+" → " +
+localStorage.getItem("destinationCity");
+
+document.getElementById("dateDisplay").textContent =
+localStorage.getItem("departureDate");
+
+document.getElementById("timeDisplay").textContent =
+localStorage.getItem("selectedTime");
+
+// Payment
+const ticketPrice =
+localStorage.getItem("selectedPrice") || "RM129";
+
+document.getElementById("ticketPrice").textContent =
+ticketPrice;
+
+const numericPrice =
+parseInt(ticketPrice.replace("RM",""));
+
+document.getElementById("totalPrice").textContent =
+"RM" + (numericPrice + 20);
+
+// Passenger Details
+document.getElementById("passengerCount").value =
+localStorage.getItem("passengers");
+
+// Demo Account Information
+document.getElementById("passengerName").value =
+"Amirrul Mukminin";
+
+document.getElementById("passengerEmail").value =
+"amirrul.mukminin1980@gmail.com";
+
+</script>
+    
 </body>
 </html>
