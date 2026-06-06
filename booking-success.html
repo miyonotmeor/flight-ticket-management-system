@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="Logo.png">
+<link rel="stylesheet" href="style.css">
+<title>Booking Success - SkyBook</title>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        ✈ SkyBook
+        <span>Flight Ticket Management System</span>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="search-flight.html">Search Flight</a></li>
+            <li><a href="my-booking.html">My Booking</a></li>
+            <li><a href="#">Profile</a></li>
+        </ul>
+    </nav>
+
+    <a href="dashboard.html" class="back-btn">← Dashboard</a>
+
+</header>
+
+<section class="login-section">
+
+    <div class="booking-card" style="max-width:700px; text-align:center;">
+
+        <h1 style="color:#0d47a1; margin-bottom:20px;">
+            ✅ Booking Successful
+        </h1>
+
+        <p style="font-size:18px; margin-bottom:25px;">
+            Your flight ticket has been booked successfully.
+        </p>
+
+        <div class="search-summary">
+
+            <h3>Booking Information</h3>
+
+            <div class="summary-grid">
+
+                <div class="summary-item">
+                    <span>Booking ID</span>
+                    <strong>BK001</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Status</span>
+                    <strong>Confirmed</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Passenger</span>
+                    <strong>Amirrul Mukminin</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Total Amount</span>
+                    <strong id="totalPrice"></strong>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-top:25px;">
+
+            <a href="my-booking.html" class="search-btn">
+                View My Booking
+            </a>
+
+            <a href="dashboard.html" class="search-btn">
+                Back to Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    © 2026 SkyBook Flight Ticket Management System
+</footer>
+
+<script>
+
+const ticketPrice =
+localStorage.getItem("selectedPrice") || "RM129";
+
+const numericPrice =
+parseInt(ticketPrice.replace("RM",""));
+
+document.getElementById("totalPrice").textContent =
+"RM" + (numericPrice + 20);
+
+</script>
+
+</body>
+</html>
