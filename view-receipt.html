@@ -40,15 +40,6 @@
 
 <div class="booking-top">
 
-    <div style="
-display:grid;
-grid-template-columns:2fr 1.5fr 1fr;
-gap:15px;
-margin-bottom:15px;
-align-items:start;
-">
-
-    <!-- Receipt Information -->
     <div class="search-summary">
 
         <h3>Receipt Information</h3>
@@ -79,39 +70,21 @@ align-items:start;
 
     </div>
 
-    <!-- Passenger Information -->
     <div class="search-summary">
 
         <h3>Passenger Information</h3>
 
-        <div class="summary-item">
-            <span>Passenger Name</span>
-            <strong>Amirrul Mukminin</strong>
-        </div>
+        <div class="summary-grid">
 
-        <div class="summary-item" style="margin-top:10px;">
-            <span>Email</span>
-            <strong>
-                amirrul.mukminin1980@gmail.com
-            </strong>
-        </div>
+            <div class="summary-item">
+                <span>Passenger Name</span>
+                <strong>Amirrul Mukminin</strong>
+            </div>
 
-    </div>
-
-    <!-- Verification QR -->
-    <div class="search-summary">
-
-        <h3>Verification QR</h3>
-
-        <div style="text-align:center;">
-
-            <img
-            src="https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=view-receipt.html"
-            alt="QR Code">
-
-            <p style="margin-top:5px;font-size:13px;">
-                Verify Receipt
-            </p>
+            <div class="summary-item">
+                <span>Email</span>
+                <strong>amirrul.mukminin1980@gmail.com</strong>
+            </div>
 
         </div>
 
@@ -182,6 +155,22 @@ align-items:start;
     </div>
 
 </div>
+
+<div class="search-summary">
+
+    <h3>Verification QR</h3>
+
+    <div style="text-align:center;">
+
+        <img
+        src="https://api.qrserver.com/v1/create-qr-code/?size=90x90&data=view-receipt.html"
+        alt="QR Code">
+
+        <p style="margin-top:3px;font-size:14px;">
+            Scan QR Code to verify receipt.
+        </p>
+
+    </div>
 
 </div>
 
