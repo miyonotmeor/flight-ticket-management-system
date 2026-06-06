@@ -403,6 +403,26 @@ nav ul li a:hover{
     justify-content:center;
 }
 
+.flight-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+    margin-top:25px;
+}
+
+.flight-grid .card{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.flight-grid .card p{
+    line-height:1.4;
+    margin-bottom:12px;
+}
+
 .card-btn{
     display:inline-block;
     background:#0d47a1;
