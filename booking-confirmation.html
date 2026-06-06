@@ -46,22 +46,22 @@
 
             <div class="summary-item">
                 <span>Airline</span>
-                <strong>AirAsia AK123</strong>
+                <strong id="airlineDisplay"></strong>
             </div>
 
             <div class="summary-item">
                 <span>Route</span>
-                <strong>Kuala Lumpur → Singapore</strong>
+                <strong id="routeDisplay"></strong>
             </div>
 
             <div class="summary-item">
                 <span>Date</span>
-                <strong>15 June 2026</strong>
+                <strong id="dateDisplay"></strong>
             </div>
 
             <div class="summary-item">
                 <span>Time</span>
-                <strong>08:00 AM - 09:10 AM</strong>
+                <strong id="timeDisplay"></strong>
             </div>
 
         </div>
@@ -75,7 +75,7 @@
 
         <div class="summary-item">
             <span>Ticket Price</span>
-            <strong>RM129</strong>
+            <strong id="ticketPrice"></strong>
         </div>
 
         <div class="summary-item">
@@ -85,7 +85,7 @@
 
         <div class="summary-item">
             <span>Total Amount</span>
-            <strong>RM149</strong>
+            <strong id="totalPrice"></strong>
         </div>
 
     </div>
@@ -96,17 +96,17 @@
 
         <div class="form-group">
             <label>Passenger Name</label>
-            <input type="text" value="John Doe" readonly>
+            <input type="text" id="passengerName" readonly>
         </div>
 
         <div class="form-group">
             <label>Email Address</label>
-            <input type="email" value="john@example.com" readonly>
+            <input type="email" id="passengerEmail" readonly>
         </div>
 
         <div class="form-group">
             <label>Passengers</label>
-            <input type="text" value="1 Passenger" readonly>
+            <input type="text" id="passengerCount" readonly>
         </div>
 
         <a href="#" class="search-btn">
