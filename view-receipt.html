@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="Logo.png">
+<link rel="stylesheet" href="style.css">
+<title>View Receipt - SkyBook</title>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        ✈ SkyBook
+        <span>Flight Ticket Management System</span>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="search-flight.html">Search Flight</a></li>
+            <li><a href="my-booking.html">My Booking</a></li>
+            <li><a href="#">Profile</a></li>
+        </ul>
+    </nav>
+
+    <a href="my-booking.html" class="back-btn">← My Booking</a>
+
+</header>
+
+<section class="login-section">
+
+    <div class="booking-card" style="max-width:850px;">
+
+        <h1 style="text-align:center;color:#0d47a1;margin-bottom:25px;">
+            E-Receipt
+        </h1>
+
+        <div class="search-summary">
+
+            <h3>Receipt Information</h3>
+
+            <div class="summary-grid">
+
+                <div class="summary-item">
+                    <span>Receipt No.</span>
+                    <strong>RC001</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Booking ID</span>
+                    <strong>BK001</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Status</span>
+                    <strong>Paid</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Date Issued</span>
+                    <strong id="receiptDate"></strong>
+                </div>
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <div class="search-summary">
+
+            <h3>Passenger Information</h3>
+
+            <div class="summary-grid">
+
+                <div class="summary-item">
+                    <span>Passenger Name</span>
+                    <strong>Amirrul Mukminin</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Email</span>
+                    <strong>
+                        amirrul.mukminin1980@gmail.com
+                    </strong>
+                </div>
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <div class="search-summary">
+
+            <h3>Flight Information</h3>
+
+            <div class="summary-grid">
+
+                <div class="summary-item">
+                    <span>Airline</span>
+                    <strong id="airlineDisplay"></strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Route</span>
+                    <strong id="routeDisplay"></strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Flight Time</span>
+                    <strong id="timeDisplay"></strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Passengers</span>
+                    <strong id="passengerDisplay"></strong>
+                </div>
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <div class="search-summary">
+
+            <h3>Payment Summary</h3>
+
+            <div class="summary-grid">
+
+                <div class="summary-item">
+                    <span>Ticket Price</span>
+                    <strong id="ticketPrice"></strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Tax & Fees</span>
+                    <strong>RM20</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Total Amount</span>
+                    <strong id="totalPrice"></strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Payment Status</span>
+                    <strong>Successful</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <div class="search-summary">
+
+            <h3>Verification QR</h3>
+
+            <div style="text-align:center;">
+
+                <img
+                src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=view-receipt.html"
+                alt="QR Code"
+                style="margin-top:10px;">
+
+                <p style="margin-top:10px;">
+                    Scan QR Code to verify receipt.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div style="
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:15px;
+        margin-top:25px;
+        ">
+
+            <button
+            onclick="window.print()"
+            class="search-btn">
+                Download Receipt
+            </button>
+
+            <a href="dashboard.html"
+            class="search-btn">
+                Back to Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    © 2026 SkyBook Flight Ticket Management System
+</footer>
+
+<script>
+
+document.getElementById("receiptDate").textContent =
+new Date().toISOString().split("T")[0];
+
+document.getElementById("airlineDisplay").textContent =
+localStorage.getItem("selectedAirline") || "AirAsia AK123";
+
+document.getElementById("routeDisplay").textContent =
+(localStorage.getItem("departureCity") || "Kuala Lumpur")
++
+" → " +
+(localStorage.getItem("destinationCity") || "Singapore");
+
+document.getElementById("timeDisplay").textContent =
+localStorage.getItem("selectedTime")
+|| "08:00 AM - 09:10 AM";
+
+document.getElementById("passengerDisplay").textContent =
+(localStorage.getItem("passengers") || "2")
++ " Passengers";
+
+const ticketPrice =
+localStorage.getItem("selectedPrice")
+|| "RM129";
+
+document.getElementById("ticketPrice").textContent =
+ticketPrice;
+
+const numericPrice =
+parseInt(ticketPrice.replace("RM",""));
+
+document.getElementById("totalPrice").textContent =
+"RM" + (numericPrice + 20);
+
+</script>
+
+</body>
+</html>
