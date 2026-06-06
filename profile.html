@@ -45,7 +45,11 @@
 
             <h3>Personal Information</h3>
 
-            <div class="summary-grid">
+            <div style="
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:12px;
+            ">
 
                 <div class="summary-item">
                     <span>Full Name</span>
@@ -119,7 +123,7 @@
 
         <div class="receipt-buttons">
 
-            <<button
+            <button
             onclick="alert('Profile updated successfully!')"
             class="search-btn">
                 Edit Profile
@@ -139,9 +143,11 @@
                 My Booking
             </a>
 
-            <a href="login.html" class="search-btn">
+            <button
+            onclick="logoutUser()"
+            class="search-btn">
                 Logout
-            </a>
+            </button>
 
         </div>
 
@@ -153,5 +159,19 @@
     © 2026 SkyBook Flight Ticket Management System
 </footer>
 
+<script>
+
+function logoutUser(){
+
+    if(confirm("Are you sure you want to logout?")){
+
+        window.location.href = "login.html";
+
+    }
+
+}
+
+</script>
+    
 </body>
 </html>
