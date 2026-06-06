@@ -32,170 +32,167 @@
 
 <section class="login-section">
 
-    <div class="booking-card" style="max-width:850px;">
+    <div class="booking-card" style="max-width:1200px;padding:20px 25px;">
 
-        <h1 style="text-align:center;color:#0d47a1;margin-bottom:25px;">
-            E-Receipt
-        </h1>
+        <h1 style="text-align:center;color:#0d47a1;margin-bottom:15px;">
+    E-Receipt
+</h1>
 
-        <div class="search-summary">
+<div class="booking-top">
 
-            <h3>Receipt Information</h3>
+    <div class="search-summary">
 
-            <div class="summary-grid">
+        <h3>Receipt Information</h3>
 
-                <div class="summary-item">
-                    <span>Receipt No.</span>
-                    <strong>RC001</strong>
-                </div>
+        <div class="summary-grid">
 
-                <div class="summary-item">
-                    <span>Booking ID</span>
-                    <strong>BK001</strong>
-                </div>
+            <div class="summary-item">
+                <span>Receipt No.</span>
+                <strong>RC001</strong>
+            </div>
 
-                <div class="summary-item">
-                    <span>Status</span>
-                    <strong>Paid</strong>
-                </div>
+            <div class="summary-item">
+                <span>Booking ID</span>
+                <strong>BK001</strong>
+            </div>
 
-                <div class="summary-item">
-                    <span>Date Issued</span>
-                    <strong id="receiptDate"></strong>
-                </div>
+            <div class="summary-item">
+                <span>Status</span>
+                <strong>Paid</strong>
+            </div>
 
+            <div class="summary-item">
+                <span>Date Issued</span>
+                <strong id="receiptDate"></strong>
             </div>
 
         </div>
 
-        <br>
+    </div>
 
-        <div class="search-summary">
+    <div class="search-summary">
 
-            <h3>Passenger Information</h3>
+        <h3>Passenger Information</h3>
 
-            <div class="summary-grid">
+        <div class="summary-grid">
 
-                <div class="summary-item">
-                    <span>Passenger Name</span>
-                    <strong>Amirrul Mukminin</strong>
-                </div>
+            <div class="summary-item">
+                <span>Passenger Name</span>
+                <strong>Amirrul Mukminin</strong>
+            </div>
 
-                <div class="summary-item">
-                    <span>Email</span>
-                    <strong>
-                        amirrul.mukminin1980@gmail.com
-                    </strong>
-                </div>
-
+            <div class="summary-item">
+                <span>Email</span>
+                <strong>amirrul.mukminin1980@gmail.com</strong>
             </div>
 
         </div>
 
-        <br>
+    </div>
 
-        <div class="search-summary">
+</div>
 
-            <h3>Flight Information</h3>
+<div class="booking-top">
 
-            <div class="summary-grid">
+    <div class="search-summary">
 
-                <div class="summary-item">
-                    <span>Airline</span>
-                    <strong id="airlineDisplay"></strong>
-                </div>
+        <h3>Flight Information</h3>
 
-                <div class="summary-item">
-                    <span>Route</span>
-                    <strong id="routeDisplay"></strong>
-                </div>
+        <div class="summary-grid">
 
-                <div class="summary-item">
-                    <span>Flight Time</span>
-                    <strong id="timeDisplay"></strong>
-                </div>
+            <div class="summary-item">
+                <span>Airline</span>
+                <strong id="airlineDisplay"></strong>
+            </div>
 
-                <div class="summary-item">
-                    <span>Passengers</span>
-                    <strong id="passengerDisplay"></strong>
-                </div>
+            <div class="summary-item">
+                <span>Route</span>
+                <strong id="routeDisplay"></strong>
+            </div>
 
+            <div class="summary-item">
+                <span>Flight Time</span>
+                <strong id="timeDisplay"></strong>
+            </div>
+
+            <div class="summary-item">
+                <span>Passengers</span>
+                <strong id="passengerDisplay"></strong>
             </div>
 
         </div>
 
-        <br>
+    </div>
 
-        <div class="search-summary">
+    <div class="search-summary">
 
-            <h3>Payment Summary</h3>
+        <h3>Payment Summary</h3>
 
-            <div class="summary-grid">
+        <div class="summary-grid">
 
-                <div class="summary-item">
-                    <span>Ticket Price</span>
-                    <strong id="ticketPrice"></strong>
-                </div>
+            <div class="summary-item">
+                <span>Ticket Price</span>
+                <strong id="ticketPrice"></strong>
+            </div>
 
-                <div class="summary-item">
-                    <span>Tax & Fees</span>
-                    <strong>RM20</strong>
-                </div>
+            <div class="summary-item">
+                <span>Tax & Fees</span>
+                <strong>RM20</strong>
+            </div>
 
-                <div class="summary-item">
-                    <span>Total Amount</span>
-                    <strong id="totalPrice"></strong>
-                </div>
+            <div class="summary-item">
+                <span>Total Amount</span>
+                <strong id="totalPrice"></strong>
+            </div>
 
-                <div class="summary-item">
-                    <span>Payment Status</span>
-                    <strong>Successful</strong>
-                </div>
-
+            <div class="summary-item">
+                <span>Payment Status</span>
+                <strong>Successful</strong>
             </div>
 
         </div>
 
-        <br>
+    </div>
 
-        <div class="search-summary">
+</div>
 
-            <h3>Verification QR</h3>
+<div class="search-summary">
 
-            <div style="text-align:center;">
+    <h3>Verification QR</h3>
 
-                <img
-                src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=view-receipt.html"
-                alt="QR Code"
-                style="margin-top:10px;">
+    <div style="text-align:center;">
 
-                <p style="margin-top:10px;">
-                    Scan QR Code to verify receipt.
-                </p>
+        <img
+        src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=view-receipt.html"
+        alt="QR Code">
 
-            </div>
+        <p style="margin-top:5px;">
+            Scan QR Code to verify receipt.
+        </p>
 
-        </div>
+    </div>
 
-        <div style="
-        display:grid;
-        grid-template-columns:1fr 1fr;
-        gap:15px;
-        margin-top:25px;
-        ">
+</div>
 
-            <button
-            onclick="window.print()"
-            class="search-btn">
-                Download Receipt
-            </button>
+<div style="
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+margin-top:15px;
+">
 
-            <a href="dashboard.html"
-            class="search-btn">
-                Back to Dashboard
-            </a>
+    <button
+    onclick="window.print()"
+    class="search-btn">
+        Download Receipt
+    </button>
 
-        </div>
+    <a href="dashboard.html"
+    class="search-btn">
+        Back to Dashboard
+    </a>
+
+</div>
 
     </div>
 
