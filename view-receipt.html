@@ -109,6 +109,16 @@ align-items:start;
         <strong>Amirrul Mukminin</strong>
     </div>
 
+    <div class="summary-item">
+    <span>Seat Number</span>
+    <strong id="seatDisplay"></strong>
+</div>
+
+<div class="summary-item">
+    <span>Gate</span>
+    <strong id="gateDisplay"></strong>
+</div>
+
     <div class="summary-item" style="margin-top:10px;">
         <span>Email</span>
         <strong>
@@ -266,6 +276,12 @@ booking.time;
 
 document.getElementById("passengerDisplay").textContent =
 booking.passengers;
+
+document.getElementById("seatDisplay").textContent =
+booking.seat || "-";
+
+document.getElementById("gateDisplay").textContent =
+booking.gate || "-";
 
 const ticketPrice =
 "RM" + booking.totalAmount;
