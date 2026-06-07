@@ -26,14 +26,14 @@
 
         <li>
             <a href="javascript:void(0)"
-            onclick="requireLogin()">
+            onclick="requireLogin('search-flight.html')">
                 Search Flight
             </a>
         </li>
 
         <li>
             <a href="javascript:void(0)"
-            onclick="requireLogin()">
+            onclick="requireLogin('my-booking.html')">
                 My Booking
             </a>
         </li>
@@ -287,14 +287,27 @@ minDate
 
 <script>
 
-function requireLogin(){
+function requireLogin(page){
 
-    alert(
-    "You are not logged in yet. Please login first."
-    );
+    if(localStorage.getItem("isLoggedIn") === "true"){
 
-    window.location.href =
-    "login.html";
+        window.location.href = page;
+
+    }else{
+
+        localStorage.setItem(
+        "redirectAfterLogin",
+        page
+        );
+
+        alert(
+        "You are not logged in yet. Please login first."
+        );
+
+        window.location.href =
+        "login.html";
+
+    }
 
 }
 
