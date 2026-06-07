@@ -60,6 +60,24 @@ align-items:center;
             My Booking
         </h1>
 
+<div style="
+display:grid;
+grid-template-columns:2fr 2fr 1fr 1.5fr 1fr 120px;
+gap:15px;
+padding:0 15px 10px 15px;
+font-weight:bold;
+color:#0d47a1;
+">
+
+    <div>Airline</div>
+    <div>Route</div>
+    <div>Date</div>
+    <div>Time</div>
+    <div>Pax</div>
+    <div>Receipt</div>
+
+</div>
+
 <div id="bookingList"
 style="
 max-height:300px;
@@ -104,39 +122,43 @@ if(bookings.length === 0){
         bookingList.innerHTML += `
 
         <div style="
-        display:grid;
-        grid-template-columns:2fr 2fr 1fr 1fr 120px;
-        align-items:center;
-        gap:15px;
-        padding:15px;
-        background:white;
-        border-radius:10px;
-        box-shadow:0 2px 8px rgba(0,0,0,0.08);
-        ">
+display:grid;
+grid-template-columns:2fr 2fr 1fr 1.5fr 1fr 120px;
+align-items:center;
+gap:15px;
+padding:15px;
+background:white;
+border-radius:10px;
+box-shadow:0 2px 8px rgba(0,0,0,0.08);
+">
 
             <div>
-                <strong>${booking.airline || "-"}</strong>
-            </div>
+    <strong>${booking.airline || "-"}</strong>
+</div>
 
-            <div>
-                ${booking.route || "-"}
-            </div>
+<div>
+    ${booking.route || "-"}
+</div>
 
-            <div>
-                ${booking.departureDate || "-"}
-            </div>
+<div>
+    ${booking.departureDate || "-"}
+</div>
 
-            <div>
-                ${booking.passengers || "-"}
-            </div>
+<div>
+    ${booking.time || "-"}
+</div>
 
-            <div>
-                <a href="#"
-                   class="card-btn"
-                   onclick="viewReceipt(${index})">
-                   View
-                </a>
-            </div>
+<div>
+    ${booking.passengers || "-"}
+</div>
+
+<div>
+    <a href="#"
+       class="card-btn"
+       onclick="viewReceipt(${index})">
+       View
+    </a>
+</div>
 
         </div>
 
