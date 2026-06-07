@@ -20,8 +20,19 @@
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="search-flight.html">Search Flight</a></li>
-            <li><a href="#">My Booking</a></li>
+            <li>
+    <a href="#"
+    onclick="requireLogin('search-flight.html')">
+        Search Flight
+    </a>
+</li>
+
+<li>
+    <a href="#"
+    onclick="requireLogin('my-booking.html')">
+        My Booking
+    </a>
+</li>
             <li><a href="about.html">About Us</a></li>
         </ul>
     </nav>
@@ -176,6 +187,30 @@ if(redirectPage){
 }
     
 </script>
+
+function requireLogin(page){
+
+    if(localStorage.getItem("isLoggedIn") === "true"){
+
+        window.location.href = page;
+
+    }else{
+
+        localStorage.setItem(
+        "redirectAfterLogin",
+        page
+        );
+
+        alert(
+        "You are not logged in yet. Please login first."
+        );
+
+        window.location.href =
+        "login.html";
+
+    }
+
+}
     
 </body>
 </html>
