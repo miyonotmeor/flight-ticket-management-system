@@ -166,16 +166,6 @@ alt="QR Code">
                 <strong id="passengerDisplay"></strong>
             </div>
 
-            <div class="summary-item">
-    <span>Seat Number</span>
-    <strong id="seatDisplay"></strong>
-</div>
-
-<div class="summary-item">
-    <span>Gate</span>
-    <strong id="gateDisplay"></strong>
-</div>
-
         </div>
 
     </div>
@@ -275,12 +265,6 @@ booking.time;
 
 document.getElementById("passengerDisplay").textContent =
 booking.passengers;
-
-document.getElementById("seatDisplay").textContent =
-booking.seat;
-
-document.getElementById("gateDisplay").textContent =
-booking.gate;
 
 document.getElementById("ticketPrice").textContent =
 "RM" + booking.totalAmount;
