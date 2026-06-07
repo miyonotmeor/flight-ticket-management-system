@@ -100,10 +100,23 @@ gap:10px;
 
 <script>
 
-const bookings =
+const currentUser =
+JSON.parse(
+localStorage.getItem("currentUser")
+);
+
+const allBookings =
 JSON.parse(
 localStorage.getItem("bookings")
 ) || [];
+
+const bookings =
+allBookings.filter(function(booking){
+
+return booking.userEmail ===
+currentUser.email;
+
+});
 
 bookings.sort(function(a,b){
 
