@@ -141,10 +141,23 @@ function logoutUser(){
 
 function updateDashboardStats(){
 
-    let bookings =
+    const currentUser =
+    JSON.parse(
+    localStorage.getItem("currentUser")
+    );
+
+    const allBookings =
     JSON.parse(
     localStorage.getItem("bookings")
     ) || [];
+
+    const bookings =
+    allBookings.filter(function(booking){
+
+        return booking.userEmail ===
+        currentUser.email;
+
+    });
 
     let totalBookings =
     bookings.length;
@@ -156,9 +169,9 @@ function updateDashboardStats(){
     let totalSpending = 0;
 
     const today =
-new Date();
+    new Date();
 
-today.setHours(0,0,0,0);
+    today.setHours(0,0,0,0);
 
     bookings.forEach(function(booking){
 
