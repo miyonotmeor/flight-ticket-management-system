@@ -48,9 +48,34 @@
 </nav>
 
     <div class="auth-buttons">
-        <a href="login.html" class="login-btn">Login</a>
-        <a href="register.html" class="register-btn">Register</a>
-    </div>
+
+    <a href="login.html"
+       class="login-btn"
+       id="loginBtn">
+        Login
+    </a>
+
+    <a href="register.html"
+       class="register-btn"
+       id="registerBtn">
+        Register
+    </a>
+
+    <a href="dashboard.html"
+       class="login-btn"
+       id="dashboardBtn"
+       style="display:none;">
+        Dashboard
+    </a>
+
+    <a href="profile.html"
+       class="register-btn"
+       id="profileBtn"
+       style="display:none;">
+        Profile
+    </a>
+
+</div>
 
 </header>
 
@@ -395,6 +420,38 @@ window.onload = function(){
     }
 
 }
+
+</script>
+
+<script>
+
+window.addEventListener("load", function(){
+
+    if(
+        localStorage.getItem("isLoggedIn")
+        ===
+        "true"
+    ){
+
+        document.getElementById(
+        "loginBtn"
+        ).style.display = "none";
+
+        document.getElementById(
+        "registerBtn"
+        ).style.display = "none";
+
+        document.getElementById(
+        "dashboardBtn"
+        ).style.display = "inline-block";
+
+        document.getElementById(
+        "profileBtn"
+        ).style.display = "inline-block";
+
+    }
+
+});
 
 </script>
     
