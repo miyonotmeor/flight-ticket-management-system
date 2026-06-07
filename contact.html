@@ -32,12 +32,12 @@
 
 <section class="login-section">
 
-    <div class="booking-card" style="padding:20px;">
+    <div class="booking-card" style="padding:15px;">
 
         <h1 style="
         text-align:center;
         color:#0d47a1;
-        margin-bottom:15px;">
+        margin-bottom:10px;">
             Contact Support
         </h1>
 
@@ -68,8 +68,6 @@
 
             </div>
 
-        </div>
-
         <br>
 
         <div class="search-summary">
@@ -96,7 +94,7 @@
                 <label>Message</label>
                 <textarea
                 id="message"
-                rows="4"
+                rows="2"
                 style="
                 width:100%;
                 padding:12px;
@@ -117,10 +115,11 @@
                 Submit Message
             </button>
 
-            <a href="about.html"
+            <button
+            onclick="goToAbout()"
             class="search-btn">
                 About Us
-            </a>
+            </button>
 
         </div>
 
@@ -148,15 +147,24 @@ function sendMessage(){
     if(name === "" || email === "" || message === ""){
 
         alert("Please complete all fields.");
-
         return;
+
     }
 
-    alert("Your message has been submitted successfully.");
+    alert(
+    "Thank you for contacting SkyBook Support. Your message has been submitted successfully."
+    );
 
     document.getElementById("name").value = "";
     document.getElementById("email").value = "";
     document.getElementById("message").value = "";
+
+}
+
+function goToAbout(){
+
+    window.location.href = "about.html";
+
 }
 
 </script>
