@@ -21,7 +21,7 @@
     <ul>
 
         <li>
-            <a href="index.html">Home</a>
+            <a href="dashboard.html">Dashboard</a>
         </li>
 
         <li>
@@ -61,19 +61,20 @@
         Register
     </a>
 
-    <a href="dashboard.html"
-       class="login-btn"
-       id="dashboardBtn"
-       style="display:none;">
-        Dashboard
-    </a>
-
     <a href="profile.html"
-       class="register-btn"
-       id="profileBtn"
-       style="display:none;">
-        Profile
-    </a>
+   class="login-btn"
+   id="profileBtn"
+   style="display:none;">
+    Profile
+</a>
+
+<a href="#"
+   onclick="logoutUser(); return false;"
+   class="register-btn"
+   id="logoutBtn"
+   style="display:none;">
+    Logout
+</a>
 
 </div>
 
@@ -447,16 +448,35 @@ window.addEventListener("load", function(){
         ).style.display = "none";
 
         document.getElementById(
-        "dashboardBtn"
+        "profileBtn"
         ).style.display = "inline-block";
 
         document.getElementById(
-        "profileBtn"
+        "logoutBtn"
         ).style.display = "inline-block";
 
     }
 
 });
+
+</script>
+
+<script>
+
+function logoutUser(){
+
+    localStorage.removeItem(
+    "isLoggedIn"
+    );
+
+    alert(
+    "You have logged out successfully."
+    );
+
+    window.location.href =
+    "index.html";
+
+}
 
 </script>
     
