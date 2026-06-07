@@ -256,8 +256,14 @@ document.getElementById("country").value;
 user.dob =
 document.getElementById("dob").value;
 
+if(
+!document.getElementById("previewImage").src.includes("data:image")
+){
+
 user.profileImage =
 document.getElementById("previewImage").src;
+
+}
 
 localStorage.setItem(
 "user",
