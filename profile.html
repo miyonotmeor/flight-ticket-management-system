@@ -165,9 +165,16 @@ function logoutUser(){
 
     if(confirm("Are you sure you want to logout?")){
 
-        window.location.href = "login.html";
+        localStorage.removeItem(
+        "isLoggedIn"
+        );
+
+        window.location.href =
+        "login.html";
 
     }
+
+}
 
 }
 
