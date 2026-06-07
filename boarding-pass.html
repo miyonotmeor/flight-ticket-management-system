@@ -82,9 +82,7 @@ gap:20px;
 
 <div class="summary-item">
 <span>Passenger</span>
-<strong id="passengerName">
-Amirrul Mukminin
-</strong>
+<strong id="passengerName"></strong>
 </div>
 
 <div class="summary-item">
@@ -178,13 +176,18 @@ JSON.parse(
 localStorage.getItem("bookings")
 ) || [];
 
-const selectedIndex =
+const selectedBookingId =
 localStorage.getItem(
-"selectedReceipt"
+"selectedBookingId"
 );
 
 const booking =
-bookings[selectedIndex];
+bookings.find(function(b){
+
+return b.bookingId ===
+selectedBookingId;
+
+});
 
 if(!booking){
 
@@ -196,6 +199,11 @@ window.location.href =
 "my-booking.html";
 
 }
+
+document.getElementById(
+"passengerName"
+).textContent =
+booking.passengerName;
 
 document.getElementById(
 "bookingId"
@@ -246,8 +254,16 @@ localStorage.removeItem(
 "isLoggedIn"
 );
 
+localStorage.removeItem(
+"currentUser"
+);
+
+alert(
+"You have logged out successfully."
+);
+
 window.location.href =
-"login.html";
+"index.html";
 
 }
 
