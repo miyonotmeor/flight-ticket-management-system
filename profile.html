@@ -91,7 +91,7 @@ align-items:center;
 
 <img
 id="profileImage"
-src="https://via.placeholder.com/150"
+src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300"
 style="
 width:150px;
 height:150px;
@@ -107,32 +107,32 @@ margin-bottom:10px;
                 
                 <div class="summary-item">
                     <span>Full Name</span>
-                    <strong>Muhammad Amirrul Mukminin Bin Reduaan</strong>
+                    <strong id="profileName"></strong>
                 </div>
 
                 <div class="summary-item">
                     <span>Email Address</span>
-                    <strong>amirrul.mukminin1980@gmail.com</strong>
+                    <strong id="profileEmail"></strong>
                 </div>
 
                 <div class="summary-item">
                     <span>Phone Number</span>
-                    <strong>011-2672 1461</strong>
+                    <strong id="profilePhone"></strong>
                 </div>
 
                 <div class="summary-item">
                     <span>Gender</span>
-                    <strong>Male</strong>
+                    <strong id="profileGender"></strong>
                 </div>
 
                 <div class="summary-item">
                     <span>Country</span>
-                    <strong>Malaysia</strong>
+                    <strong id="profileCountry"></strong>
                 </div>
 
                 <div class="summary-item">
                     <span>Date of Birth</span>
-                    <strong>14 February 2003</strong>
+                    <strong id="profileDob"></strong>
                 </div>
 
             </div>
@@ -153,7 +153,7 @@ margin-bottom:10px;
 
                 <div class="summary-item">
                     <span>Username</span>
-                    <strong>amirrul123</strong>
+                    <strong id="profileUsername"></strong>
                 </div>
 
                 <div class="summary-item">
@@ -163,7 +163,7 @@ margin-bottom:10px;
 
                 <div class="summary-item">
                     <span>Member Since</span>
-                    <strong>June 2026</strong>
+                    <strong id="profileMemberSince"></strong>
                 </div>
 
                 <div class="summary-item">
@@ -201,7 +201,63 @@ margin-bottom:10px;
 
 <script>
 
-<script>
+const user =
+JSON.parse(
+localStorage.getItem("user")
+);
+
+if(user){
+
+document.getElementById(
+"profileName"
+).textContent =
+user.fullName;
+
+document.getElementById(
+"profileEmail"
+).textContent =
+user.email;
+
+document.getElementById(
+"profilePhone"
+).textContent =
+user.phone;
+
+document.getElementById(
+"profileGender"
+).textContent =
+user.gender;
+
+document.getElementById(
+"profileCountry"
+).textContent =
+user.country;
+
+document.getElementById(
+"profileDob"
+).textContent =
+user.dob;
+
+document.getElementById(
+"profileUsername"
+).textContent =
+user.username;
+
+document.getElementById(
+"profileMemberSince"
+).textContent =
+user.memberSince;
+
+if(user.profileImage){
+
+document.getElementById(
+"profileImage"
+).src =
+user.profileImage;
+
+}
+
+}
 
 const bookings =
 JSON.parse(
@@ -211,10 +267,9 @@ localStorage.getItem("bookings")
 document.getElementById(
 "totalBookings"
 ).textContent =
-bookings.length + " Booking(s)";
+bookings.length +
+" Booking(s)";
 
-</script>
-    
 function logoutUser(){
 
     if(confirm("Are you sure you want to logout?")){
@@ -227,7 +282,6 @@ function logoutUser(){
         "login.html";
 
     }
-
 
 }
 
