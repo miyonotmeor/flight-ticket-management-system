@@ -131,16 +131,23 @@ function loginUser(){
     "Amirrul1234";
 
     if(email === validEmail &&
-       password === validPassword){
+   password === validPassword){
 
-        rememberUser();
+    rememberUser();
 
-        window.location.href =
-        "dashboard.html";
+    localStorage.setItem(
+    "isLoggedIn",
+    "true"
+    );
 
-        return false;
+    window.location.href =
+    "dashboard.html";
 
-    }else{
+    return false;
+
+}
+    
+    else{
 
         alert(
             "Invalid email or password!"
