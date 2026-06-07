@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="Logo.png">
+<link rel="stylesheet" href="style.css">
+<title>Payment - SkyBook</title>
+</head>
+
+<body>
+
+<header>
+
+    <a href="index.html"
+       class="logo"
+       style="text-decoration:none;color:white;">
+        ✈ SkyBook
+        <span>Flight Ticket Management System</span>
+    </a>
+
+    <nav>
+        <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="search-flight.html">Search Flight</a></li>
+            <li><a href="my-booking.html">My Booking</a></li>
+            <li><a href="profile.html">Profile</a></li>
+        </ul>
+    </nav>
+
+    <div style="
+    position:absolute;
+    right:50px;
+    display:flex;
+    gap:10px;
+    align-items:center;">
+
+        <a href="#"
+           onclick="history.back(); return false;"
+           class="back-btn">
+            ← Back
+        </a>
+
+        <a href="#"
+           onclick="logoutUser(); return false;"
+           class="register-btn">
+            Logout
+        </a>
+
+    </div>
+
+</header>
+
+<section class="login-section">
+
+    <div class="booking-card">
+
+        <h1 style="
+        text-align:center;
+        color:#0d47a1;
+        margin-bottom:20px;">
+            Payment Details
+        </h1>
+
+        <div class="search-summary">
+
+            <h3>Booking Summary</h3>
+
+            <div class="summary-grid">
+
+                <div class="summary-item">
+                    <span>Airline</span>
+                    <strong id="airlineDisplay"></strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Route</span>
+                    <strong id="routeDisplay"></strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Date</span>
+                    <strong id="dateDisplay"></strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Time</span>
+                    <strong id="timeDisplay"></strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Passengers</span>
+                    <strong id="passengerDisplay"></strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Total Amount</span>
+                    <strong id="priceDisplay"></strong>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div style="margin-top:20px;">
+
+            <div class="form-group">
+                <label>Card Holder Name</label>
+                <input type="text" id="cardName">
+            </div>
+
+            <div class="form-group">
+                <label>Card Number</label>
+                <input type="text" id="cardNumber">
+            </div>
+
+            <div class="form-group">
+                <label>Expiry Date</label>
+                <input type="month" id="expiryDate">
+            </div>
+
+            <div class="form-group">
+                <label>CVV</label>
+                <input type="password" id="cvv">
+            </div>
+
+        </div>
+
+        <button
+        onclick="confirmPayment()"
+        class="search-btn"
+        style="width:100%;margin-top:15px;">
+            Confirm Payment
+        </button>
+
+    </div>
+
+</section>
+
+<footer>
+    © 2026 SkyBook Flight Ticket Management System
+</footer>
+
+<script>
+
+document.getElementById("airlineDisplay").textContent =
+localStorage.getItem("selectedAirline") || "-";
+
+document.getElementById("routeDisplay").textContent =
+(localStorage.getItem("departureCity") || "") +
+" → " +
+(localStorage.getItem("destinationCity") || "");
+
+document.getElementById("dateDisplay").textContent =
+localStorage.getItem("departureDate") || "-";
+
+document.getElementById("timeDisplay").textContent =
+localStorage.getItem("selectedTime") || "-";
+
+document.getElementById("passengerDisplay").textContent =
+localStorage.getItem("passengers") || "-";
+
+const price =
+localStorage.getItem("selectedPrice") || "RM129";
+
+document.getElementById("priceDisplay").textContent =
+price;
+
+function confirmPayment(){
+
+    const cardName =
+    document.getElementById("cardName").value;
+
+    const cardNumber =
+    document.getElementById("cardNumber").value;
+
+    const expiryDate =
+    document.getElementById("expiryDate").value;
+
+    const cvv =
+    document.getElementById("cvv").value;
+
+    if(
+        cardName === "" ||
+        cardNumber === "" ||
+        expiryDate === "" ||
+        cvv === ""
+    ){
+
+        alert(
+        "Please complete all payment information."
+        );
+
+        return;
+    }
+
+    let bookings =
+    JSON.parse(
+    localStorage.getItem("bookings")
+    ) || [];
+
+    bookings.push({
+
+        airline:
+        localStorage.getItem("selectedAirline"),
+
+        departureDate:
+        localStorage.getItem("departureDate"),
+
+        totalAmount:
+        parseInt(
+        price.replace("RM","")
+        )
+
+    });
+
+    localStorage.setItem(
+    "bookings",
+    JSON.stringify(bookings)
+    );
+
+    alert(
+    "Payment Successful!"
+    );
+
+    window.location.href =
+    "my-booking.html";
+
+}
+
+function logoutUser(){
+
+    localStorage.removeItem(
+    "isLoggedIn"
+    );
+
+    alert(
+    "You have logged out successfully."
+    );
+
+    window.location.href =
+    "index.html";
+
+}
+
+</script>
+
+</body>
+</html>
