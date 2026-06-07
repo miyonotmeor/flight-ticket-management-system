@@ -65,76 +65,9 @@ width:95%;
 <h1 style="
 text-align:center;
 color:#0d47a1;
-margin-bottom:25px;
-">
+margin-bottom:25px;">
 Admin Dashboard
 </h1>
-
-<div class="search-summary">
-
-<h3>Quick Actions</h3>
-
-<div class="summary-grid">
-
-<div class="summary-item">
-
-<span>Bookings Data</span>
-
-<button
-onclick="resetBookings()"
-class="search-btn"
-style="margin-top:10px;">
-Reset Bookings
-</button>
-
-</div>
-
-<div class="summary-item">
-
-<span>User Data</span>
-
-<button
-onclick="resetUsers()"
-class="search-btn"
-style="margin-top:10px;">
-Reset Users
-</button>
-
-</div>
-
-<div class="summary-item">
-
-<span>Login Session</span>
-
-<button
-onclick="resetLogin()"
-class="search-btn"
-style="margin-top:10px;">
-Reset Login
-</button>
-
-</div>
-
-<div class="summary-item">
-
-<span>Entire System</span>
-
-<button
-onclick="resetSystem()"
-class="search-btn"
-style="margin-top:10px;">
-Factory Reset
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<br>
 
 <div class="search-summary">
 
@@ -144,9 +77,7 @@ Factory Reset
 
 </div>
 
-<div style="
-margin-top:20px;
-">
+<div style="margin-top:20px;">
 
 <button
 onclick="resetSystem()"
@@ -173,33 +104,6 @@ const users =
 JSON.parse(
 localStorage.getItem("users")
 ) || [];
-
-const currentUser =
-JSON.parse(
-localStorage.getItem("currentUser")
-);
-
-const bookings =
-JSON.parse(
-localStorage.getItem("bookings")
-) || [];
-
-document.getElementById(
-"userCount"
-).textContent =
-users.length;
-
-document.getElementById(
-"bookingCount"
-).textContent =
-bookings.length;
-
-document.getElementById(
-"loginStatus"
-).textContent =
-localStorage.getItem("isLoggedIn")
-? "Active"
-: "Inactive";
 
 const userList =
 document.getElementById(
@@ -229,6 +133,7 @@ box-shadow:0 2px 8px rgba(0,0,0,0.08);
 ">
 
 <strong>User ${index + 1}</strong>
+
 <br><br>
 
 Full Name:
@@ -260,13 +165,13 @@ ${user.username || "-"}
 function resetSystem(){
 
 if(confirm(
-"Reset the entire system?"
+"Reset the entire system and delete all registered accounts?"
 )){
 
 localStorage.clear();
 
 alert(
-"Factory reset completed."
+"Factory reset completed successfully."
 );
 
 window.location.href =
@@ -282,8 +187,8 @@ localStorage.removeItem(
 "isLoggedIn"
 );
 
-alert(
-"You have logged out successfully."
+localStorage.removeItem(
+"isAdmin"
 );
 
 window.location.href =
