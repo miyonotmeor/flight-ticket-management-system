@@ -287,6 +287,32 @@ minDate
 
 <script>
 
+document.getElementById("departureDate").addEventListener(
+"change",
+function(){
+
+    const selectedDate =
+    new Date(this.value);
+
+    selectedDate.setDate(
+    selectedDate.getDate() + 1
+    );
+
+    const nextDay =
+    selectedDate.toISOString().split("T")[0];
+
+    document.getElementById(
+    "returnDate"
+    ).min = nextDay;
+
+}
+
+);
+
+</script>
+
+<script>
+
 function requireLogin(page){
 
     if(localStorage.getItem("isLoggedIn") === "true"){
