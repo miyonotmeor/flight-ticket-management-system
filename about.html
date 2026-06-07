@@ -12,10 +12,15 @@
 
 <header>
 
-    <div class="logo">
-        ✈ SkyBook
-        <span>Flight Ticket Management System</span>
-    </div>
+    <a href="#"
+onclick="goHome()"
+class="logo"
+style="text-decoration:none;color:white;">
+
+    ✈ SkyBook
+    <span>Flight Ticket Management System</span>
+
+</a>
 
     <nav>
     <ul>
@@ -196,6 +201,30 @@ function checkLogin(page){
 
         window.location.href =
         "login.html";
+
+    }
+
+}
+
+</script>
+
+<script>
+
+function goHome(){
+
+    if(
+        localStorage.getItem("isLoggedIn")
+        ===
+        "true"
+    ){
+
+        window.location.href =
+        "dashboard.html";
+
+    }else{
+
+        window.location.href =
+        "index.html";
 
     }
 
