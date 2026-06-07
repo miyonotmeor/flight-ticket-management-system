@@ -217,7 +217,11 @@ const totalPrice =
 
 function selectFlight(airline,time,price){
 
-    if(localStorage.getItem("isLoggedIn") !== "true"){
+const passengerText =
+localStorage.getItem("passengers");
+
+
+if(localStorage.getItem("isLoggedIn") !== "true"){
 
     localStorage.setItem(
     "redirectAfterLogin",
@@ -235,9 +239,9 @@ function selectFlight(airline,time,price){
     );
 
     localStorage.setItem(
-"selectedPrice",
-totalPrice
-);
+    "selectedPrice",
+    totalPrice
+    );
 
     alert(
     "You are not logged in yet. Please login first."
@@ -249,23 +253,25 @@ totalPrice
     return;
 }
 
-    localStorage.setItem(
-    "selectedAirline",
-    airline
-    );
+localStorage.setItem(
+"selectedAirline",
+airline
+);
 
-    localStorage.setItem(
-    "selectedTime",
-    time
-    );
+localStorage.setItem(
+"selectedTime",
+time
+);
 
-    localStorage.setItem(
+localStorage.setItem(
 "selectedPrice",
 totalPrice
 );
 
-    window.location.href =
-    "payment.html";
+window.location.href =
+"payment.html";
+
+}
 
 }
 
