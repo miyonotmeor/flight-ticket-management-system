@@ -62,7 +62,7 @@ align-items:center;
 
 <div style="
 display:grid;
-grid-template-columns:2fr 2fr 1fr 1.5fr 1fr 120px;
+grid-template-columns:2fr 2fr 1fr 1.5fr 1fr 1fr 120px;
 gap:15px;
 padding:0 15px 10px 15px;
 font-weight:bold;
@@ -107,9 +107,9 @@ localStorage.getItem("bookings")
 
 bookings.sort(function(a,b){
 
-    return new Date(a.departureDate)
+    return new Date(b.departureDate)
     -
-    new Date(b.departureDate);
+    new Date(a.departureDate);
 
 });
 
@@ -135,11 +135,17 @@ new Date(booking.departureDate);
 
 let status = "Upcoming";
 
-if(departureDate < today){
+const today = new Date();
 
-    status = "Completed";
+today.setHours(0,0,0,0);
 
-}
+const departureDate =
+new Date(booking.departureDate);
+
+let status =
+departureDate >= today
+? "Upcoming"
+: "Completed";
         
         bookingList.innerHTML += `
 
@@ -173,7 +179,18 @@ localStorage.getItem("destinationCity"))}
 </div>
 
 <div>
-    ${status}
+
+<span style="
+font-weight:600;
+color:${status === 'Upcoming'
+? '#2e7d32'
+: '#757575'};
+">
+
+${status}
+
+</span>
+
 </div>
 
 <div>
