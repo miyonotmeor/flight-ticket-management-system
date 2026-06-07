@@ -60,32 +60,15 @@ align-items:center;
             My Booking
         </h1>
 
-        <h3 style="
-color:#0d47a1;
-margin-bottom:20px;
-text-align:center;
-">
-My Bookings
-</h3>
-
 <div id="bookingList"
 style="
-max-height:500px;
+max-height:300px;
 overflow-y:auto;
 display:flex;
 flex-direction:column;
-gap:15px;
+gap:10px;
 ">
-</div>
-
-<div style="margin-top:20px;">
-
-    <a href="dashboard.html"
-       class="search-btn"
-       style="width:100%;display:block;text-align:center;">
-        Dashboard
-    </a>
-
+    
 </div>
 
     </div>
@@ -120,42 +103,40 @@ if(bookings.length === 0){
 
         bookingList.innerHTML += `
 
-        <div class="search-summary">
+        <div style="
+        display:grid;
+        grid-template-columns:2fr 2fr 1fr 1fr 120px;
+        align-items:center;
+        gap:15px;
+        padding:15px;
+        background:white;
+        border-radius:10px;
+        box-shadow:0 2px 8px rgba(0,0,0,0.08);
+        ">
 
-            <div class="summary-grid">
-
-                <div class="summary-item">
-                    <span>Airline</span>
-                    <strong>${booking.airline}</strong>
-                </div>
-
-                <div class="summary-item">
-                    <span>Route</span>
-                    <strong>${booking.route}</strong>
-                </div>
-
-                <div class="summary-item">
-                    <span>Date</span>
-                    <strong>${booking.departureDate}</strong>
-                </div>
-
-                <div class="summary-item">
-                    <span>Passengers</span>
-                    <strong>${booking.passengers}</strong>
-                </div>
-
+            <div>
+                <strong>${booking.airline || "-"}</strong>
             </div>
 
-            <a href="#"
-               class="search-btn"
-               style="
-               margin-top:15px;
-               display:block;
-               text-align:center;
-               "
-               onclick="viewReceipt(${index})">
-               View Receipt
-            </a>
+            <div>
+                ${booking.route || "-"}
+            </div>
+
+            <div>
+                ${booking.departureDate || "-"}
+            </div>
+
+            <div>
+                ${booking.passengers || "-"}
+            </div>
+
+            <div>
+                <a href="#"
+                   class="card-btn"
+                   onclick="viewReceipt(${index})">
+                   View
+                </a>
+            </div>
 
         </div>
 
