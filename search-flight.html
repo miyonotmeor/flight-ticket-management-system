@@ -12,10 +12,10 @@
 
 <header>
 
-    <div class="logo">
+    <a href="index.html" class="logo" style="text-decoration:none;color:white;">
         ✈ SkyBook
         <span>Flight Ticket Management System</span>
-    </div>
+    </a>
 
     <nav>
         <ul>
@@ -143,6 +143,31 @@ window.addEventListener("keydown", function(e){
         );
 
         localStorage.setItem(
+        "sessionExpired",
+        "true"
+        );
+
+    }
+
+});
+
+</script>
+
+<script>
+
+window.onload = function(){
+
+    if(
+        localStorage.getItem("sessionExpired")
+        ===
+        "true"
+    ){
+
+        localStorage.removeItem(
+        "sessionExpired"
+        );
+
+        localStorage.setItem(
         "redirectAfterLogin",
         "search-flight.html"
         );
@@ -156,7 +181,7 @@ window.addEventListener("keydown", function(e){
 
     }
 
-});
+}
 
 </script>
     
