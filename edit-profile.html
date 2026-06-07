@@ -269,6 +269,29 @@ localStorage.setItem(
 JSON.stringify(user)
 );
 
+let users =
+JSON.parse(
+localStorage.getItem("users")
+) || [];
+
+users =
+users.map(function(u){
+
+if(u.email === user.email){
+
+return user;
+
+}
+
+return u;
+
+});
+
+localStorage.setItem(
+"users",
+JSON.stringify(users)
+);
+
 alert(
 "Profile updated successfully!"
 );
