@@ -105,25 +105,11 @@
 
     <select id="passengers">
 
-        <option value="1">
-            1 Passenger
-        </option>
-
-        <option value="2">
-            2 Passengers
-        </option>
-
-        <option value="3">
-            3 Passengers
-        </option>
-
-        <option value="4">
-            4 Passengers
-        </option>
-
-        <option value="5">
-            5 Passengers
-        </option>
+        <option value="1 Passenger">1 Passenger</option>
+        <option value="2 Passengers">2 Passengers</option>
+        <option value="3 Passengers">3 Passengers</option>
+        <option value="4 Passengers">4 Passengers</option>
+        <option value="5 Passengers">5 Passengers</option>
 
     </select>
 
@@ -208,6 +194,9 @@ function searchFlight(){
 
     const returnDate =
     document.getElementById("returnDate").value;
+
+    const passengers =
+    document.getElementById("passengers").value;
 
     if(
         departure === "" ||
