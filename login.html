@@ -137,11 +137,25 @@ function loginUser(){
     const password =
     document.getElementById("password").value;
 
-    const validEmail =
-    "amirrul.mukminin1980@gmail.com";
+    const user =
+JSON.parse(
+localStorage.getItem("user")
+);
 
-    const validPassword =
-    "Amirrul1234";
+if(!user){
+
+    alert(
+    "No account found. Please register first."
+    );
+
+    return false;
+}
+
+const validEmail =
+user.email;
+
+const validPassword =
+user.password;
 
     if(email === validEmail &&
    password === validPassword){
@@ -151,6 +165,11 @@ function loginUser(){
     localStorage.setItem(
 "isLoggedIn",
 "true"
+);
+
+        localStorage.setItem(
+"currentUser",
+JSON.stringify(user)
 );
 
 const redirectPage =
