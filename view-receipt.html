@@ -109,16 +109,6 @@ align-items:start;
         <strong>Amirrul Mukminin</strong>
     </div>
 
-    <div class="summary-item">
-    <span>Seat Number</span>
-    <strong id="seatDisplay"></strong>
-</div>
-
-<div class="summary-item">
-    <span>Gate</span>
-    <strong id="gateDisplay"></strong>
-</div>
-
     <div class="summary-item" style="margin-top:10px;">
         <span>Email</span>
         <strong>
@@ -248,32 +238,31 @@ alt="QR Code">
 <script>
 
 const bookings =
-JSON.parse(
-localStorage.getItem("bookings")
-) || [];
+JSON.parse(localStorage.getItem("bookings")) || [];
 
 const selectedIndex =
-localStorage.getItem(
-"selectedReceipt"
-);
+localStorage.getItem("selectedReceipt");
 
 const booking =
 bookings[selectedIndex];
 
-document.getElementById(
-"bookingId"
-).textContent =
+if(!booking){
+
+    alert("Booking not found");
+
+    window.location.href =
+    "my-booking.html";
+
+}
+
+document.getElementById("receiptId").textContent =
+booking.receiptId;
+
+document.getElementById("bookingId").textContent =
 booking.bookingId;
 
-document.getElementById(
-"receiptId"
-).textContent =
-booking.receiptId || "RC000001";
-
-document.getElementById(
-"receiptDate"
-).textContent =
-booking.paymentDate || booking.departureDate;
+document.getElementById("receiptDate").textContent =
+booking.paymentDate;
 
 document.getElementById("airlineDisplay").textContent =
 booking.airline;
@@ -288,31 +277,24 @@ document.getElementById("passengerDisplay").textContent =
 booking.passengers;
 
 document.getElementById("seatDisplay").textContent =
-booking.seat || "-";
+booking.seat;
 
 document.getElementById("gateDisplay").textContent =
-booking.gate || "-";
+booking.gate;
 
-const ticketPrice =
+document.getElementById("ticketPrice").textContent =
 "RM" + booking.totalAmount;
 
-document.getElementById(
-"ticketPrice"
-).textContent =
-ticketPrice;
-
-document.getElementById(
-"totalPrice"
-).textContent =
+document.getElementById("totalPrice").textContent =
 "RM" + (booking.totalAmount + 20);
 
-document.getElementById(
-"qrImage"
-).src =
+document.getElementById("qrImage").src =
 "https://api.qrserver.com/v1/create-qr-code/?size=120x120&data="
 +
 encodeURIComponent(
-booking.bookingId
+booking.bookingId +
+"|" +
+booking.receiptId
 );
 
 </script>
