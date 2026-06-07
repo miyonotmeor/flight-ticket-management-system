@@ -35,32 +35,75 @@
 
 <section class="hero">
     <h1>Book Your Next Journey</h1>
-    <p>Search and book flights quickly and easily.</p>
 </section>
 
 <div class="search-box">
 
     <div class="search-grid">
 
-        <select>
-            <option>Departure City</option>
-            <option>Kuala Lumpur</option>
-            <option>Johor Bahru</option>
-            <option>Penang</option>
-        </select>
+        <div>
+            <label style="font-weight:600;display:block;margin-bottom:6px;">
+                Departure City
+            </label>
 
-        <select>
-            <option>Destination City</option>
-            <option>Singapore</option>
-            <option>Bangkok</option>
-            <option>Tokyo</option>
-        </select>
+            <select id="departureCity">
 
-        <input type="date">
+                <option value="">
+                    Select Departure City
+                </option>
 
-        <input type="date">
+                <option>Kuala Lumpur</option>
+                <option>Johor Bahru</option>
+                <option>Penang</option>
 
-        <button class="search-btn">Search Flight</button>
+            </select>
+        </div>
+
+        <div>
+            <label style="font-weight:600;display:block;margin-bottom:6px;">
+                Destination City
+            </label>
+
+            <select id="destinationCity">
+
+                <option value="">
+                    Select Destination City
+                </option>
+
+                <option>Singapore</option>
+                <option>Bangkok</option>
+                <option>Tokyo</option>
+
+            </select>
+        </div>
+
+        <div>
+            <label style="font-weight:600;display:block;margin-bottom:6px;">
+                Departure Date
+            </label>
+
+            <input type="date" id="departureDate">
+        </div>
+
+        <div>
+            <label style="font-weight:600;display:block;margin-bottom:6px;">
+                Return Date
+            </label>
+
+            <input type="date" id="returnDate">
+        </div>
+
+        <div style="
+        display:flex;
+        align-items:flex-end;
+        ">
+            <button
+            onclick="searchFlight()"
+            class="search-btn"
+            style="width:100%;">
+                Search Flight
+            </button>
+        </div>
 
     </div>
 
@@ -112,5 +155,60 @@
     © 2026 SkyBook Flight Ticket Management System
 </footer>
 
+<script>
+
+function searchFlight(){
+
+    const departure =
+    document.getElementById("departureCity").value;
+
+    const destination =
+    document.getElementById("destinationCity").value;
+
+    const departureDate =
+    document.getElementById("departureDate").value;
+
+    const returnDate =
+    document.getElementById("returnDate").value;
+
+    if(
+        departure === "" ||
+        destination === "" ||
+        departureDate === "" ||
+        returnDate === ""
+    ){
+
+        alert("Please complete all fields.");
+        return;
+
+    }
+
+    localStorage.setItem(
+        "departureCity",
+        departure
+    );
+
+    localStorage.setItem(
+        "destinationCity",
+        destination
+    );
+
+    localStorage.setItem(
+        "departureDate",
+        departureDate
+    );
+
+    localStorage.setItem(
+        "returnDate",
+        returnDate
+    );
+
+    window.location.href =
+    "flight-results.html";
+
+}
+
+</script>
+    
 </body>
 </html>
