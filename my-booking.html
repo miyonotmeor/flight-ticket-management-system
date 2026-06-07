@@ -73,6 +73,7 @@ color:#0d47a1;
     <div>Route</div>
     <div>Date</div>
     <div>Time</div>
+    <div>Status</div>
     <div>Pax</div>
     <div>Receipt</div>
 
@@ -80,7 +81,7 @@ color:#0d47a1;
 
 <div id="bookingList"
 style="
-max-height:300px;
+max-height:350px;
 overflow-y:auto;
 display:flex;
 flex-direction:column;
@@ -104,6 +105,14 @@ JSON.parse(
 localStorage.getItem("bookings")
 ) || [];
 
+bookings.sort(function(a,b){
+
+    return new Date(a.departureDate)
+    -
+    new Date(b.departureDate);
+
+});
+
 const bookingList =
 document.getElementById("bookingList");
 
@@ -119,11 +128,24 @@ if(bookings.length === 0){
 
     bookings.forEach(function(booking,index){
 
+    const today = new Date();
+
+const departureDate =
+new Date(booking.departureDate);
+
+let status = "Upcoming";
+
+if(departureDate < today){
+
+    status = "Completed";
+
+}
+        
         bookingList.innerHTML += `
 
         <div style="
 display:grid;
-grid-template-columns:2fr 2fr 1fr 1.5fr 1fr 120px;
+grid-template-columns:2fr 2fr 1fr 1.5fr 1fr 1fr 120px;
 align-items:center;
 gap:15px;
 padding:15px;
@@ -137,7 +159,9 @@ box-shadow:0 2px 8px rgba(0,0,0,0.08);
 </div>
 
 <div>
-    ${booking.route || "-"}
+    ${booking.route || 
+(localStorage.getItem("departureCity") + " → " +
+localStorage.getItem("destinationCity"))}
 </div>
 
 <div>
@@ -146,6 +170,10 @@ box-shadow:0 2px 8px rgba(0,0,0,0.08);
 
 <div>
     ${booking.time || "-"}
+</div>
+
+<div>
+    ${status}
 </div>
 
 <div>
