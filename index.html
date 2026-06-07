@@ -20,8 +20,12 @@
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="search-flight.html">Search Flight</a></li>
-            <li><a href="dashboard.html">My Booking</a></li>
+            <a href="#" onclick="requireLogin()">
+                Search Flight
+            </a>
+            <a href="#" onclick="requireLogin()">
+                My Booking
+            </a>
             <li><a href="about.html">About Us</a></li>
         </ul>
     </nav>
@@ -261,6 +265,21 @@ document.getElementById("returnDate").setAttribute(
 "min",
 minDate
 );
+
+</script>
+
+<script>
+
+function requireLogin(){
+
+    alert(
+    "You are not logged in yet. Please login first."
+    );
+
+    window.location.href =
+    "login.html";
+
+}
 
 </script>
     
