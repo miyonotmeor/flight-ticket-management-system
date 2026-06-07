@@ -176,7 +176,7 @@ function updateDashboardStats(){
     bookings.forEach(function(booking){
 
         totalSpending +=
-        booking.totalAmount;
+booking.totalAmount + 20;
 
         const departureDate =
         new Date(booking.departureDate);
