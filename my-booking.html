@@ -168,7 +168,9 @@ localStorage.getItem("destinationCity"))}
 </div>
 
 <div>
-    ${booking.time || "-"}
+    ${booking.time ||
+      localStorage.getItem("selectedTime") ||
+      "-"}
 </div>
 
 <div>
@@ -187,7 +189,9 @@ ${status}
 </div>
 
 <div>
-    ${booking.passengers || "-"}
+    ${booking.passengers ||
+      localStorage.getItem("passengers") ||
+      "-"}
 </div>
 
 <div>
