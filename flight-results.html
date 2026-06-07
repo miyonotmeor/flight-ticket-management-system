@@ -182,11 +182,34 @@ localStorage.getItem("passengers");
 
 function selectFlight(airline,time,price){
 
-    localStorage.setItem("selectedAirline", airline);
-    localStorage.setItem("selectedTime", time);
-    localStorage.setItem("selectedPrice", price);
+    if(localStorage.getItem("isLoggedIn") !== "true"){
 
-    window.location.href = "booking-confirmation.html";
+        alert(
+        "You are not logged in yet. Please login first."
+        );
+
+        window.location.href = "login.html";
+
+        return;
+    }
+
+    localStorage.setItem(
+    "selectedAirline",
+    airline
+    );
+
+    localStorage.setItem(
+    "selectedTime",
+    time
+    );
+
+    localStorage.setItem(
+    "selectedPrice",
+    price
+    );
+
+    window.location.href =
+    "booking-confirmation.html";
 
 }
 
