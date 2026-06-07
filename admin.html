@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="Logo.png">
+<link rel="stylesheet" href="style.css">
+<title>Admin Dashboard - SkyBook</title>
+</head>
+
+<body>
+
+<header>
+
+<a href="index.html"
+class="logo"
+style="text-decoration:none;color:white;">
+
+✈ SkyBook
+<span>Flight Ticket Management System</span>
+
+</a>
+
+<nav>
+<ul>
+<li><a href="dashboard.html">Dashboard</a></li>
+<li><a href="search-flight.html">Search Flight</a></li>
+<li><a href="my-booking.html">My Booking</a></li>
+<li><a href="profile.html">Profile</a></li>
+</ul>
+</nav>
+
+<div style="
+position:absolute;
+right:50px;
+display:flex;
+gap:10px;
+align-items:center;
+">
+
+<a href="#"
+onclick="history.back();return false;"
+class="back-btn">
+← Back
+</a>
+
+<a href="#"
+onclick="logoutUser();return false;"
+class="register-btn">
+Logout
+</a>
+
+</div>
+
+</header>
+
+<section class="login-section">
+
+<div class="booking-card"
+style="
+max-width:1200px;
+width:95%;
+">
+
+<h1 style="
+text-align:center;
+color:#0d47a1;
+margin-bottom:25px;
+">
+Admin Dashboard
+</h1>
+
+<div class="booking-top">
+
+<div class="search-summary">
+
+<h3>System Statistics</h3>
+
+<div class="summary-grid">
+
+<div class="summary-item">
+<span>Registered Users</span>
+<strong id="userCount">0</strong>
+</div>
+
+<div class="summary-item">
+<span>Total Bookings</span>
+<strong id="bookingCount">0</strong>
+</div>
+
+<div class="summary-item">
+<span>Login Status</span>
+<strong id="loginStatus">Inactive</strong>
+</div>
+
+<div class="summary-item">
+<span>System Status</span>
+<strong>Online</strong>
+</div>
+
+</div>
+
+</div>
+
+<div class="search-summary">
+
+<h3>Quick Actions</h3>
+
+<div class="summary-grid">
+
+<div class="summary-item">
+
+<span>Bookings Data</span>
+
+<button
+onclick="resetBookings()"
+class="search-btn"
+style="margin-top:10px;">
+Reset Bookings
+</button>
+
+</div>
+
+<div class="summary-item">
+
+<span>User Data</span>
+
+<button
+onclick="resetUsers()"
+class="search-btn"
+style="margin-top:10px;">
+Reset Users
+</button>
+
+</div>
+
+<div class="summary-item">
+
+<span>Login Session</span>
+
+<button
+onclick="resetLogin()"
+class="search-btn"
+style="margin-top:10px;">
+Reset Login
+</button>
+
+</div>
+
+<div class="summary-item">
+
+<span>Entire System</span>
+
+<button
+onclick="resetSystem()"
+class="search-btn"
+style="margin-top:10px;">
+Factory Reset
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<br>
+
+<div class="search-summary">
+
+<h3>Registered Users</h3>
+
+<div id="userList">
+
+</div>
+
+</div>
+
+<br>
+
+<div class="search-summary">
+
+<h3>Current User Information</h3>
+
+<div class="summary-grid">
+
+<div class="summary-item">
+<span>Current User</span>
+<strong id="currentUserName">-</strong>
+</div>
+
+<div class="summary-item">
+<span>Email</span>
+<strong id="currentUserEmail">-</strong>
+</div>
+
+<div class="summary-item">
+<span>Username</span>
+<strong id="currentUsername">-</strong>
+</div>
+
+<div class="summary-item">
+<span>Member Since</span>
+<strong id="currentMemberSince">-</strong>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 SkyBook Flight Ticket Management System
+</footer>
+
+<script>
+
+const users =
+JSON.parse(
+localStorage.getItem("users")
+) || [];
+
+const currentUser =
+JSON.parse(
+localStorage.getItem("user")
+);
+
+const bookings =
+JSON.parse(
+localStorage.getItem("bookings")
+) || [];
+
+document.getElementById(
+"userCount"
+).textContent =
+users.length;
+
+document.getElementById(
+"bookingCount"
+).textContent =
+bookings.length;
+
+document.getElementById(
+"loginStatus"
+).textContent =
+localStorage.getItem("isLoggedIn")
+? "Active"
+: "Inactive";
+
+if(currentUser){
+
+document.getElementById(
+"currentUserName"
+).textContent =
+currentUser.fullName || "-";
+
+document.getElementById(
+"currentUserEmail"
+).textContent =
+currentUser.email || "-";
+
+document.getElementById(
+"currentUsername"
+).textContent =
+currentUser.username || "-";
+
+document.getElementById(
+"currentMemberSince"
+).textContent =
+currentUser.memberSince || "-";
+
+}
+
+const userList =
+document.getElementById(
+"userList"
+);
+
+if(users.length === 0){
+
+userList.innerHTML = `
+<div class="summary-item">
+<strong>No registered users found.</strong>
+</div>
+`;
+
+}else{
+
+users.forEach(function(user,index){
+
+userList.innerHTML += `
+
+<div style="
+background:white;
+padding:15px;
+margin-bottom:10px;
+border-radius:10px;
+box-shadow:0 2px 8px rgba(0,0,0,0.08);
+">
+
+<strong>User ${index + 1}</strong>
+<br><br>
+
+Full Name:
+${user.fullName || "-"}
+
+<br>
+
+Email:
+${user.email || "-"}
+
+<br>
+
+Phone:
+${user.phone || "-"}
+
+<br>
+
+Username:
+${user.username || "-"}
+
+</div>
+
+`;
+
+});
+
+}
+
+function resetBookings(){
+
+if(confirm(
+"Delete all bookings?"
+)){
+
+localStorage.removeItem(
+"bookings"
+);
+
+alert(
+"All bookings deleted successfully."
+);
+
+location.reload();
+
+}
+
+}
+
+function resetUsers(){
+
+if(confirm(
+"Delete all registered users?"
+)){
+
+localStorage.removeItem(
+"user"
+);
+
+localStorage.removeItem(
+"users"
+);
+
+alert(
+"All user data deleted successfully."
+);
+
+location.reload();
+
+}
+
+}
+
+function resetLogin(){
+
+if(confirm(
+"Clear login session?"
+)){
+
+localStorage.removeItem(
+"isLoggedIn"
+);
+
+alert(
+"Login session cleared."
+);
+
+location.reload();
+
+}
+
+}
+
+function resetSystem(){
+
+if(confirm(
+"Reset the entire system?"
+)){
+
+localStorage.clear();
+
+alert(
+"Factory reset completed."
+);
+
+window.location.href =
+"index.html";
+
+}
+
+}
+
+function logoutUser(){
+
+localStorage.removeItem(
+"isLoggedIn"
+);
+
+alert(
+"You have logged out successfully."
+);
+
+window.location.href =
+"login.html";
+
+}
+
+</script>
+
+</body>
+</html>
