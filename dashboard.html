@@ -90,25 +90,25 @@ align-items:center;
 
 <div class="stats">
 
-    <div class="stat-box">
-        <h2>3</h2>
-        <p>Total Bookings</p>
-    </div>
+   <div class="stat-box">
+    <h2 id="totalBookings">0</h2>
+    <p>Total Bookings</p>
+</div>
 
-    <div class="stat-box">
-        <h2>1</h2>
-        <p>Upcoming Flight</p>
-    </div>
+<div class="stat-box">
+    <h2 id="upcomingFlights">0</h2>
+    <p>Upcoming Flights</p>
+</div>
 
-    <div class="stat-box">
-        <h2>2</h2>
-        <p>Completed Trips</p>
-    </div>
+<div class="stat-box">
+    <h2 id="completedTrips">0</h2>
+    <p>Completed Trips</p>
+</div>
 
-    <div class="stat-box">
-        <h2>RM 1,250</h2>
-        <p>Total Spending</p>
-    </div>
+<div class="stat-box">
+    <h2 id="totalSpending">RM0</h2>
+    <p>Total Spending</p>
+</div>
 
 </div>
 
@@ -134,6 +134,73 @@ function logoutUser(){
     "index.html";
 
 }
+
+</script>
+
+<script>
+
+function updateDashboardStats(){
+
+    let bookings =
+    JSON.parse(
+    localStorage.getItem("bookings")
+    ) || [];
+
+    let totalBookings =
+    bookings.length;
+
+    let upcomingFlights = 0;
+
+    let completedTrips = 0;
+
+    let totalSpending = 0;
+
+    const today =
+    new Date();
+
+    bookings.forEach(function(booking){
+
+        totalSpending +=
+        booking.totalAmount;
+
+        const departureDate =
+        new Date(booking.departureDate);
+
+        if(departureDate >= today){
+
+            upcomingFlights++;
+
+        }else{
+
+            completedTrips++;
+
+        }
+
+    });
+
+    document.getElementById(
+    "totalBookings"
+    ).textContent =
+    totalBookings;
+
+    document.getElementById(
+    "upcomingFlights"
+    ).textContent =
+    upcomingFlights;
+
+    document.getElementById(
+    "completedTrips"
+    ).textContent =
+    completedTrips;
+
+    document.getElementById(
+    "totalSpending"
+    ).textContent =
+    "RM" + totalSpending;
+
+}
+
+updateDashboardStats();
 
 </script>
     
