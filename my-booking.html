@@ -60,71 +60,33 @@ align-items:center;
             My Booking
         </h1>
 
-        <div class="search-summary">
+        <h3 style="
+color:#0d47a1;
+margin-bottom:20px;
+text-align:center;
+">
+My Bookings
+</h3>
 
-            <h3>Booking Details</h3>
+<div id="bookingList"
+style="
+max-height:500px;
+overflow-y:auto;
+display:flex;
+flex-direction:column;
+gap:15px;
+">
+</div>
 
-            <div class="summary-grid">
+<div style="margin-top:20px;">
 
-                <div class="summary-item">
-                    <span>Booking ID</span>
-                    <strong>BK001</strong>
-                </div>
+    <a href="dashboard.html"
+       class="search-btn"
+       style="width:100%;display:block;text-align:center;">
+        Dashboard
+    </a>
 
-                <div class="summary-item">
-                    <span>Status</span>
-                    <strong>Confirmed</strong>
-                </div>
-
-                <div class="summary-item">
-                    <span>Airline</span>
-                    <strong id="airlineDisplay"></strong>
-                </div>
-
-                <div class="summary-item">
-                    <span>Route</span>
-                    <strong id="routeDisplay"></strong>
-                </div>
-
-                <div class="summary-item">
-                    <span>Date</span>
-                    <strong id="dateDisplay"></strong>
-                </div>
-
-                <div class="summary-item">
-                    <span>Time</span>
-                    <strong id="timeDisplay"></strong>
-                </div>
-
-                <div class="summary-item">
-                    <span>Passengers</span>
-                    <strong id="passengerDisplay"></strong>
-                </div>
-
-                <div class="summary-item">
-                    <span>Total Amount</span>
-                    <strong id="totalDisplay"></strong>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div style="display:flex; gap:15px; margin-top:20px;">
-
-            <a href="view-receipt.html"
-               class="search-btn"
-               style="flex:1;">
-                View Receipt
-            </a>
-
-            <a href="dashboard.html"
-               class="search-btn"
-               style="flex:1;">
-                Dashboard
-            </a>
-
-        </div>
+</div>
 
     </div>
 
@@ -136,37 +98,84 @@ align-items:center;
 
 <script>
 
-// Airline
-document.getElementById("airlineDisplay").textContent =
-localStorage.getItem("selectedAirline") || "No Booking";
+const bookings =
+JSON.parse(
+localStorage.getItem("bookings")
+) || [];
 
-// Route
-document.getElementById("routeDisplay").textContent =
-(localStorage.getItem("departureCity") || "") +
-" → " +
-(localStorage.getItem("destinationCity") || "");
+const bookingList =
+document.getElementById("bookingList");
 
-// Date
-document.getElementById("dateDisplay").textContent =
-localStorage.getItem("departureDate") || "-";
+if(bookings.length === 0){
 
-// Time
-document.getElementById("timeDisplay").textContent =
-localStorage.getItem("selectedTime") || "-";
+    bookingList.innerHTML = `
+    <div class="summary-item">
+        <strong>No bookings found.</strong>
+    </div>
+    `;
 
-// Passengers
-document.getElementById("passengerDisplay").textContent =
-localStorage.getItem("passengers") || "-";
+}else{
 
-// Price
-const ticketPrice =
-localStorage.getItem("selectedPrice") || "RM129";
+    bookings.forEach(function(booking,index){
 
-const numericPrice =
-parseInt(ticketPrice.replace("RM",""));
+        bookingList.innerHTML += `
 
-document.getElementById("totalDisplay").textContent =
-"RM" + (numericPrice + 20);
+        <div class="search-summary">
+
+            <div class="summary-grid">
+
+                <div class="summary-item">
+                    <span>Airline</span>
+                    <strong>${booking.airline}</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Route</span>
+                    <strong>${booking.route}</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Date</span>
+                    <strong>${booking.departureDate}</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Passengers</span>
+                    <strong>${booking.passengers}</strong>
+                </div>
+
+            </div>
+
+            <a href="#"
+               class="search-btn"
+               style="
+               margin-top:15px;
+               display:block;
+               text-align:center;
+               "
+               onclick="viewReceipt(${index})">
+               View Receipt
+            </a>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+    function viewReceipt(index){
+
+    localStorage.setItem(
+    "selectedReceipt",
+    index
+    );
+
+    window.location.href =
+    "view-receipt.html";
+
+}
 
 </script>
 
