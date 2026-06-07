@@ -1,1 +1,257 @@
-a
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="Logo.png">
+<link rel="stylesheet" href="style.css">
+<title>Boarding Pass - SkyBook</title>
+</head>
+
+<body>
+
+<header>
+
+<a href="index.html"
+class="logo"
+style="text-decoration:none;color:white;">
+
+✈ SkyBook
+<span>Flight Ticket Management System</span>
+
+</a>
+
+<nav>
+<ul>
+<li><a href="dashboard.html">Dashboard</a></li>
+<li><a href="search-flight.html">Search Flight</a></li>
+<li><a href="my-booking.html">My Booking</a></li>
+<li><a href="profile.html">Profile</a></li>
+</ul>
+</nav>
+
+<div style="
+position:absolute;
+right:50px;
+display:flex;
+gap:10px;
+align-items:center;
+">
+
+<a href="view-receipt.html"
+class="back-btn">
+← Back
+</a>
+
+<a href="#"
+onclick="logoutUser();return false;"
+class="register-btn">
+Logout
+</a>
+
+</div>
+
+</header>
+
+<section class="login-section">
+
+<div class="booking-card"
+style="
+max-width:1000px;
+width:95%;
+">
+
+<h1 style="
+text-align:center;
+color:#0d47a1;
+margin-bottom:25px;">
+Boarding Pass
+</h1>
+
+<div style="
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:20px;
+">
+
+<div class="search-summary">
+
+<h3>Passenger Information</h3>
+
+<div class="summary-grid">
+
+<div class="summary-item">
+<span>Passenger</span>
+<strong id="passengerName">
+Amirrul Mukminin
+</strong>
+</div>
+
+<div class="summary-item">
+<span>Booking ID</span>
+<strong id="bookingId"></strong>
+</div>
+
+<div class="summary-item">
+<span>Airline</span>
+<strong id="airline"></strong>
+</div>
+
+<div class="summary-item">
+<span>Route</span>
+<strong id="route"></strong>
+</div>
+
+<div class="summary-item">
+<span>Date</span>
+<strong id="date"></strong>
+</div>
+
+<div class="summary-item">
+<span>Flight Time</span>
+<strong id="time"></strong>
+</div>
+
+<div class="summary-item">
+<span>Passengers</span>
+<strong id="passengers"></strong>
+</div>
+
+</div>
+
+</div>
+
+<div class="search-summary">
+
+<h3>Boarding QR</h3>
+
+<div style="text-align:center;">
+
+<img
+id="boardingQR"
+style="
+width:180px;
+height:180px;
+">
+
+<p style="
+margin-top:10px;
+font-size:14px;
+">
+Present this QR code at boarding gate
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="receipt-buttons"
+style="margin-top:20px;">
+
+<button
+onclick="window.print()"
+class="search-btn">
+Download Boarding Pass
+</button>
+
+<a href="my-booking.html"
+class="search-btn">
+Back To Booking
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 SkyBook Flight Ticket Management System
+</footer>
+
+<script>
+
+const bookings =
+JSON.parse(
+localStorage.getItem("bookings")
+) || [];
+
+const selectedIndex =
+localStorage.getItem(
+"selectedReceipt"
+);
+
+const booking =
+bookings[selectedIndex];
+
+if(!booking){
+
+alert(
+"Booking not found."
+);
+
+window.location.href =
+"my-booking.html";
+
+}
+
+document.getElementById(
+"bookingId"
+).textContent =
+booking.bookingId;
+
+document.getElementById(
+"airline"
+).textContent =
+booking.airline;
+
+document.getElementById(
+"route"
+).textContent =
+booking.route;
+
+document.getElementById(
+"date"
+).textContent =
+booking.departureDate;
+
+document.getElementById(
+"time"
+).textContent =
+booking.time;
+
+document.getElementById(
+"passengers"
+).textContent =
+booking.passengers;
+
+document.getElementById(
+"boardingQR"
+).src =
+"https://api.qrserver.com/v1/create-qr-code/?size=200x200&data="
++
+encodeURIComponent(
+booking.bookingId +
+"|" +
+booking.route +
+"|" +
+booking.departureDate
+);
+
+function logoutUser(){
+
+localStorage.removeItem(
+"isLoggedIn"
+);
+
+window.location.href =
+"login.html";
+
+}
+
+</script>
+
+</body>
+</html>
