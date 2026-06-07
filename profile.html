@@ -12,10 +12,14 @@
 
 <header>
 
-    <div class="logo">
-        ✈ SkyBook
-        <span>Flight Ticket Management System</span>
-    </div>
+    <a href="index.html"
+class="logo"
+style="text-decoration:none;color:white;">
+
+    ✈ SkyBook
+    <span>Flight Ticket Management System</span>
+
+</a>
 
     <nav>
         <ul>
@@ -26,13 +30,37 @@
         </ul>
     </nav>
 
-    <a href="dashboard.html" class="back-btn">← Dashboard</a>
+    <div style="
+position:absolute;
+right:50px;
+display:flex;
+gap:10px;
+align-items:center;
+">
+
+<a href="#"
+onclick="history.back();return false;"
+class="back-btn">
+← Back
+</a>
+
+<a href="#"
+onclick="logoutUser();return false;"
+class="register-btn">
+Logout
+</a>
+
+</div>
 
 </header>
 
 <section class="login-section">
 
-    <div class="booking-card">
+    <div class="booking-card"
+style="
+max-width:1100px;
+width:95%;
+">
 
         <h1 style="
         text-align:center;
@@ -46,11 +74,37 @@
             <h3>Personal Information</h3>
 
             <div style="
-            display:grid;
-            grid-template-columns:repeat(3,1fr);
-            gap:12px;
-            ">
+display:grid;
+grid-template-columns:220px 1fr 1fr;
+gap:12px;
+align-items:stretch;
+">
 
+                <div class="summary-item"
+style="
+grid-row:span 2;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+">
+
+<img
+id="profileImage"
+src="https://via.placeholder.com/150"
+style="
+width:150px;
+height:150px;
+border-radius:50%;
+object-fit:cover;
+margin-bottom:10px;
+">
+
+<strong>Profile Picture</strong>
+
+</div>
+
+                
                 <div class="summary-item">
                     <span>Full Name</span>
                     <strong>Muhammad Amirrul Mukminin Bin Reduaan</strong>
@@ -114,7 +168,7 @@
 
                 <div class="summary-item">
                     <span>Total Bookings</span>
-                    <strong>1 Booking</strong>
+                    <strong id="totalBookings"></strong>
                 </div>
 
             </div>
@@ -124,29 +178,15 @@
         <div class="receipt-buttons">
 
             <button
-            onclick="alert('Profile updated successfully!')"
+            onclick="window.location.href='edit-profile.html'"
             class="search-btn">
                 Edit Profile
             </button>
 
             <button
-            onclick="alert('Password change feature coming soon.')"
+            onclick="window.location.href='change-password.html'"
             class="search-btn">
                 Change Password
-            </button>
-
-        </div>
-
-        <div class="receipt-buttons" style="margin-top:15px;">
-
-            <a href="my-booking.html" class="search-btn">
-                My Booking
-            </a>
-
-            <button
-            onclick="logoutUser()"
-            class="search-btn">
-                Logout
             </button>
 
         </div>
@@ -161,6 +201,20 @@
 
 <script>
 
+<script>
+
+const bookings =
+JSON.parse(
+localStorage.getItem("bookings")
+) || [];
+
+document.getElementById(
+"totalBookings"
+).textContent =
+bookings.length + " Booking(s)";
+
+</script>
+    
 function logoutUser(){
 
     if(confirm("Are you sure you want to logout?")){
@@ -174,7 +228,6 @@ function logoutUser(){
 
     }
 
-}
 
 }
 
