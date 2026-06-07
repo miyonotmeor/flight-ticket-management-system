@@ -108,7 +108,7 @@
 
         </div>
 
-        <div style="
+       <div style="
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:15px;
@@ -118,87 +118,61 @@ margin-top:20px;
     <div class="form-group">
         <label>Card Holder Name</label>
         <input
-type="text"
-id="cardName"
-placeholder="John Doe"
-oninput="validateCardName()">
+        type="text"
+        id="cardName"
+        placeholder="John Doe"
+        oninput="validateCardName()">
 
-<small
-id="cardNameHint"
-style="color:green;">
-Example: John Doe
-</small>
-
-<small
-id="cardNameError"
-style="color:red;display:none;">
-Card holder name can contain letters only.
-</small>
+        <small
+        id="cardNameError"
+        style="color:red;display:none;">
+        Card holder name can contain letters only.
+        </small>
     </div>
 
     <div class="form-group">
         <label>Card Number</label>
         <input
-type="text"
-id="cardNumber"
-placeholder="1234 5678 9012 3456"
-maxlength="19"
-oninput="validateCardNumber()">
+        type="text"
+        id="cardNumber"
+        placeholder="1234 5678 9012 3456"
+        maxlength="19"
+        oninput="validateCardNumber()">
 
-<small
-id="cardNumberHint"
-style="color:green;">
-Example: 1234 5678 9012 3456
-</small>
-
-<small
-id="cardNumberError"
-style="color:red;display:none;">
-Card number must contain exactly 16 digits.
-</small>
+        <small
+        id="cardNumberError"
+        style="color:red;display:none;">
+        Card number must contain exactly 16 digits.
+        </small>
     </div>
 
     <div class="form-group">
         <label>Expiry Date</label>
+        <input
+        type="month"
+        id="expiryDate">
+
         <small
-style="color:green;">
-Select a future expiry date.
-</small>
-<label>Expiry Date</label>
-
-<input
-type="month"
-id="expiryDate">
-
-<small style="color:green;">
-Select a future expiry date.
-</small>
-
-<small
-id="expiryError"
-style="color:red;display:none;">
-Card expiry date must be in the future.
-</small>
+        id="expiryError"
+        style="color:red;display:none;">
+        Card expiry date must be in the future.
+        </small>
+    </div>
 
     <div class="form-group">
         <label>CVV</label>
         <input
-type="password"
-id="cvv"
-placeholder="123"
-maxlength="3"
-oninput="validateCVV()">
+        type="password"
+        id="cvv"
+        placeholder="123"
+        maxlength="3"
+        oninput="validateCVV()">
 
-<small
-style="color:green;">
-Example: 123
-</small>
-
-<small
-id="cvvError"
-style="color:red;display:none;">
-CVV must contain exactly 3 digits.
-</small>
+        <small
+        id="cvvError"
+        style="color:red;display:none;">
+        CVV must contain exactly 3 digits.
+        </small>
     </div>
 
 </div>
@@ -364,18 +338,22 @@ if(
 }
 
 const expiry =
-new Date(expiryDate);
+new Date(expiryDate + "-01");
 
 const today =
 new Date();
 
-if(expiry <= today){
+today.setDate(1);
+today.setHours(0,0,0,0);
+
+if(expiry < today){
 
     alert(
     "Card expiry date must be in the future."
     );
 
     return;
+
 }
 
     let bookings =
