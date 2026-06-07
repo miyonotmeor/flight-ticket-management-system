@@ -227,7 +227,7 @@ localStorage.getItem("users")
 
 const currentUser =
 JSON.parse(
-localStorage.getItem("user")
+localStorage.getItem("currentUser")
 );
 
 const bookings =
@@ -364,6 +364,10 @@ localStorage.removeItem(
 
 localStorage.removeItem(
 "users"
+);
+
+localStorage.removeItem(
+"currentUser"
 );
 
 alert(
