@@ -106,14 +106,12 @@ align-items:start;
 
     <div class="summary-item">
         <span>Passenger Name</span>
-        <strong>Amirrul Mukminin</strong>
+        <strong id="passengerName"></strong>
     </div>
 
     <div class="summary-item" style="margin-top:10px;">
         <span>Email</span>
-        <strong>
-            amirrul.mukminin1980@gmail.com
-        </strong>
+        <strong id="passengerEmail"></strong>
     </div>
 
 </div>
@@ -228,13 +226,22 @@ alt="QR Code">
 <script>
 
 const bookings =
-JSON.parse(localStorage.getItem("bookings")) || [];
+JSON.parse(
+localStorage.getItem("bookings")
+) || [];
 
-const selectedIndex =
-localStorage.getItem("selectedReceipt");
+const selectedBookingId =
+localStorage.getItem(
+"selectedBookingId"
+);
 
 const booking =
-bookings[selectedIndex];
+bookings.find(function(b){
+
+return b.bookingId ===
+selectedBookingId;
+
+});
 
 if(!booking){
 
@@ -253,6 +260,21 @@ booking.bookingId;
 
 document.getElementById("receiptDate").textContent =
 booking.paymentDate;
+
+const currentUser =
+JSON.parse(
+localStorage.getItem("currentUser")
+);
+
+document.getElementById(
+"passengerName"
+).textContent =
+currentUser.fullName;
+
+document.getElementById(
+"passengerEmail"
+).textContent =
+currentUser.email;
 
 document.getElementById("airlineDisplay").textContent =
 booking.airline;
@@ -288,8 +310,12 @@ booking.receiptId
 function logoutUser(){
 
     localStorage.removeItem(
-    "isLoggedIn"
-    );
+"isLoggedIn"
+);
+
+localStorage.removeItem(
+"currentUser"
+);
 
     alert(
     "You have logged out successfully."
