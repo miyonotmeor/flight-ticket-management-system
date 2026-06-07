@@ -28,11 +28,27 @@
         </ul>
     </nav>
 
+    <div style="
+position:absolute;
+right:50px;
+display:flex;
+gap:10px;
+align-items:center;
+">
+
     <a href="#"
        onclick="history.back(); return false;"
        class="back-btn">
-            ← Back
+        ← Back
     </a>
+
+    <a href="#"
+       onclick="logoutUser(); return false;"
+       class="register-btn">
+        Logout
+    </a>
+
+</div>
 
 </header>
 
@@ -154,5 +170,24 @@ document.getElementById("totalDisplay").textContent =
 
 </script>
 
+<script>
+
+function logoutUser(){
+
+    localStorage.removeItem(
+    "isLoggedIn"
+    );
+
+    alert(
+    "You have logged out successfully."
+    );
+
+    window.location.href =
+    "index.html";
+
+}
+
+</script>
+    
 </body>
 </html>
