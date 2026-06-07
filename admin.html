@@ -70,38 +70,6 @@ margin-bottom:25px;
 Admin Dashboard
 </h1>
 
-<div class="booking-top">
-
-<div class="search-summary">
-
-<h3>System Statistics</h3>
-
-<div class="summary-grid">
-
-<div class="summary-item">
-<span>Registered Users</span>
-<strong id="userCount">0</strong>
-</div>
-
-<div class="summary-item">
-<span>Total Bookings</span>
-<strong id="bookingCount">0</strong>
-</div>
-
-<div class="summary-item">
-<span>Login Status</span>
-<strong id="loginStatus">Inactive</strong>
-</div>
-
-<div class="summary-item">
-<span>System Status</span>
-<strong>Online</strong>
-</div>
-
-</div>
-
-</div>
-
 <div class="search-summary">
 
 <h3>Quick Actions</h3>
@@ -173,6 +141,19 @@ Factory Reset
 <h3>Registered Users</h3>
 
 <div id="userList">
+
+</div>
+
+<div style="
+margin-top:20px;
+">
+
+<button
+onclick="resetSystem()"
+class="search-btn"
+style="width:100%;">
+Factory Reset
+</button>
 
 </div>
 
@@ -273,74 +254,6 @@ ${user.username || "-"}
 `;
 
 });
-
-}
-
-function resetBookings(){
-
-if(confirm(
-"Delete all bookings?"
-)){
-
-localStorage.removeItem(
-"bookings"
-);
-
-alert(
-"All bookings deleted successfully."
-);
-
-location.reload();
-
-}
-
-}
-
-function resetUsers(){
-
-if(confirm(
-"Delete all registered users?"
-)){
-
-localStorage.removeItem(
-"user"
-);
-
-localStorage.removeItem(
-"users"
-);
-
-localStorage.removeItem(
-"currentUser"
-);
-
-alert(
-"All user data deleted successfully."
-);
-
-location.reload();
-
-}
-
-}
-
-function resetLogin(){
-
-if(confirm(
-"Clear login session?"
-)){
-
-localStorage.removeItem(
-"isLoggedIn"
-);
-
-alert(
-"Login session cleared."
-);
-
-location.reload();
-
-}
 
 }
 
