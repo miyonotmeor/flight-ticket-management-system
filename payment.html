@@ -364,12 +364,33 @@ if(expiry < today){
     bookings.push({
 
     bookingId:
-"BK" +
-Math.floor(
-100000 + Math.random() * 900000
-),
+    "BK" +
+    Math.floor(
+    100000 + Math.random() * 900000
+    ),
+
+    receiptId:
+    "RC" +
+    Math.floor(
+    100000 + Math.random() * 900000
+    ),
+
+    paymentDate:
+    new Date().toISOString().split("T")[0],
+
+    seat:
+    Math.floor(
+    Math.random() * 30 + 1
+    ) + "A",
+
+    gate:
+    "G" +
+    Math.floor(
+    Math.random() * 20 + 1
+    ),
 
     airline:
+        
     localStorage.getItem("selectedAirline"),
 
     route:
