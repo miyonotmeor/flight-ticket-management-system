@@ -23,13 +23,38 @@ style="text-decoration:none;color:white;">
 </a>
 
     <nav>
-        <ul>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="search-flight.html">Search Flight</a></li>
-            <li><a href="my-booking.html">My Booking</a></li>
-            <li><a href="profile.html">Profile</a></li>
-        </ul>
-    </nav>
+<ul>
+
+<li>
+<a href="#"
+onclick="checkLogin('dashboard.html')">
+Dashboard
+</a>
+</li>
+
+<li>
+<a href="#"
+onclick="checkLogin('search-flight.html')">
+Search Flight
+</a>
+</li>
+
+<li>
+<a href="#"
+onclick="checkLogin('my-booking.html')">
+My Booking
+</a>
+</li>
+
+<li>
+<a href="#"
+onclick="checkLogin('profile.html')">
+Profile
+</a>
+</li>
+
+</ul>
+</nav>
 
     <div style="
 position:absolute;
@@ -249,6 +274,39 @@ function goHome(){
 
         window.location.href =
         "index.html";
+
+    }
+
+}
+
+</script>
+
+<script>
+
+function checkLogin(page){
+
+    if(
+        localStorage.getItem("isLoggedIn")
+        ===
+        "true"
+    ){
+
+        window.location.href =
+        page;
+
+    }else{
+
+        localStorage.setItem(
+        "redirectAfterLogin",
+        page
+        );
+
+        alert(
+        "You are not logged in yet. Please login first."
+        );
+
+        window.location.href =
+        "login.html";
 
     }
 
