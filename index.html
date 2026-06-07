@@ -21,7 +21,10 @@
     <ul>
 
         <li>
-            <a href="dashboard.html">Dashboard</a>
+            <a href="index.html"
+                id="homeNav">
+                Home
+            </a>
         </li>
 
         <li>
@@ -434,28 +437,36 @@ window.onload = function(){
 window.addEventListener("load", function(){
 
     if(
-        localStorage.getItem("isLoggedIn")
-        ===
-        "true"
-    ){
+    localStorage.getItem("isLoggedIn")
+    ===
+    "true"
+){
 
-        document.getElementById(
-        "loginBtn"
-        ).style.display = "none";
+    document.getElementById(
+    "loginBtn"
+    ).style.display = "none";
 
-        document.getElementById(
-        "registerBtn"
-        ).style.display = "none";
+    document.getElementById(
+    "registerBtn"
+    ).style.display = "none";
 
-        document.getElementById(
-        "profileBtn"
-        ).style.display = "inline-block";
+    document.getElementById(
+    "profileBtn"
+    ).style.display = "inline-block";
 
-        document.getElementById(
-        "logoutBtn"
-        ).style.display = "inline-block";
+    document.getElementById(
+    "logoutBtn"
+    ).style.display = "inline-block";
 
-    }
+    document.getElementById(
+    "homeNav"
+    ).textContent = "Dashboard";
+
+    document.getElementById(
+    "homeNav"
+    ).href = "dashboard.html";
+
+}
 
 });
 
