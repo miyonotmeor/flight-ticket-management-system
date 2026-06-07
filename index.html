@@ -134,6 +134,7 @@
         align-items:flex-end;
         ">
             <button
+            type="button"
             onclick="searchFlight()"
             class="search-btn"
             style="width:100%;">
@@ -194,6 +195,7 @@
 <script>
 
 function searchFlight(){
+    alert("Search button clicked!");
 
     const departure =
     document.getElementById("departureCity").value;
@@ -248,10 +250,11 @@ function searchFlight(){
     "flight-results.html";
 
 }
+    
+</script>
 
 <script>
 
-// Tomorrow's date
 const tomorrow = new Date();
 
 tomorrow.setDate(
@@ -261,21 +264,16 @@ tomorrow.getDate() + 1
 const minDate =
 tomorrow.toISOString().split("T")[0];
 
-document.getElementById(
-"departureDate"
-).min = minDate;
+document.getElementById("departureDate").setAttribute(
+"min",
+minDate
+);
 
-document.getElementById(
-"returnDate"
-).min = minDate;
+document.getElementById("returnDate").setAttribute(
+"min",
+minDate
+);
 
-const passengers =
-document.getElementById(
-"passengers"
-).value;
-
-</script>
-    
 </script>
     
 </body>
