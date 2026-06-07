@@ -18,13 +18,38 @@
     </div>
 
     <nav>
-        <ul>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="search-flight.html">Search Flight</a></li>
-            <li><a href="my-booking.html">My Booking</a></li>
-            <li><a href="profile.html">Profile</a></li>
-        </ul>
-    </nav>
+    <ul>
+
+        <li>
+            <a href="#"
+            onclick="checkLogin('dashboard.html')">
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="#"
+            onclick="checkLogin('search-flight.html')">
+                Search Flight
+            </a>
+        </li>
+
+        <li>
+            <a href="#"
+            onclick="checkLogin('my-booking.html')">
+                My Booking
+            </a>
+        </li>
+
+        <li>
+            <a href="#"
+            onclick="checkLogin('profile.html')">
+                Profile
+            </a>
+        </li>
+
+    </ul>
+</nav>
 
     <a href="#" onclick="history.back(); return false;" class="back-btn">
         ← Back
@@ -130,7 +155,9 @@ margin-bottom:5px;
 
         <div class="receipt-buttons" style="margin-top:10px;">
 
-            <a href="dashboard.html" class="search-btn">
+            <a href="#"
+            onclick="checkLogin('dashboard.html')"
+            class="search-btn">
                 Back to Dashboard
             </a>
 
@@ -148,5 +175,33 @@ margin-bottom:5px;
     © 2026 SkyBook Flight Ticket Management System
 </footer>
 
+<script>
+
+function checkLogin(page){
+
+    if(localStorage.getItem("isLoggedIn") === "true"){
+
+        window.location.href = page;
+
+    }else{
+
+        localStorage.setItem(
+        "redirectAfterLogin",
+        page
+        );
+
+        alert(
+        "You are not logged in yet. Please login first."
+        );
+
+        window.location.href =
+        "login.html";
+
+    }
+
+}
+
+</script>
+    
 </body>
 </html>
