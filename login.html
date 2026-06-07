@@ -137,25 +137,45 @@ function loginUser(){
     const password =
     document.getElementById("password").value;
 
-    const user =
+    if(
+email === "admin@skybook.com" &&
+password === "admin123"
+){
+
+    localStorage.setItem(
+    "isLoggedIn",
+    "true"
+    );
+
+    window.location.href =
+    "admin.html";
+
+    return false;
+
+}
+
+const users =
 JSON.parse(
-localStorage.getItem("user")
-);
+localStorage.getItem("users")
+) || [];
+
+const user =
+users.find(function(u){
+
+    return u.email === email &&
+           u.password === password;
+
+});
 
 if(!user){
 
     alert(
-    "No account found. Please register first."
+    "Invalid email or password!"
     );
 
     return false;
+
 }
-
-const validEmail =
-user.email;
-
-const validPassword =
-user.password;
 
     if(email === validEmail &&
    password === validPassword){
