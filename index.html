@@ -355,9 +355,46 @@ window.addEventListener("keydown", function(e){
         "isLoggedIn"
         );
 
+        localStorage.setItem(
+        "sessionExpired",
+        "true"
+        );
+
     }
 
 });
+
+</script>
+
+<script>
+
+window.onload = function(){
+
+    if(
+        localStorage.getItem("sessionExpired")
+        ===
+        "true"
+    ){
+
+        localStorage.removeItem(
+        "sessionExpired"
+        );
+
+        localStorage.setItem(
+        "redirectAfterLogin",
+        "index.html"
+        );
+
+        alert(
+        "Your session has ended. Please login again."
+        );
+
+        window.location.href =
+        "login.html";
+
+    }
+
+}
 
 </script>
     
