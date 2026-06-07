@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="Logo.png">
+<link rel="stylesheet" href="style.css">
+<title>Contact Support - SkyBook</title>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        ✈ SkyBook
+        <span>Flight Ticket Management System</span>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="search-flight.html">Search Flight</a></li>
+            <li><a href="my-booking.html">My Booking</a></li>
+            <li><a href="profile.html">Profile</a></li>
+        </ul>
+    </nav>
+
+    <a href="dashboard.html" class="back-btn">← Dashboard</a>
+
+</header>
+
+<section class="login-section">
+
+    <div class="booking-card" style="padding:20px;">
+
+        <h1 style="
+        text-align:center;
+        color:#0d47a1;
+        margin-bottom:15px;">
+            Contact Support
+        </h1>
+
+        <div class="search-summary">
+
+            <h3>Support Information</h3>
+
+            <div style="
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:12px;
+            ">
+
+                <div class="summary-item">
+                    <span>Email</span>
+                    <strong>support@skybook.com</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Phone</span>
+                    <strong>+60 3-1234 5678</strong>
+                </div>
+
+                <div class="summary-item">
+                    <span>Operating Hours</span>
+                    <strong>24/7 Support</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <div class="search-summary">
+
+            <h3>Send Us A Message</h3>
+
+            <div class="form-group">
+                <label>Full Name</label>
+                <input
+                type="text"
+                id="name"
+                placeholder="Enter your full name">
+            </div>
+
+            <div class="form-group">
+                <label>Email Address</label>
+                <input
+                type="email"
+                id="email"
+                placeholder="Enter your email">
+            </div>
+
+            <div class="form-group">
+                <label>Message</label>
+                <textarea
+                id="message"
+                rows="4"
+                style="
+                width:100%;
+                padding:12px;
+                border:1px solid #ddd;
+                border-radius:10px;
+                resize:none;
+                font-family:inherit;"
+                placeholder="Enter your message here..."></textarea>
+            </div>
+
+        </div>
+
+        <div class="receipt-buttons" style="margin-top:15px;">
+
+            <button
+            onclick="sendMessage()"
+            class="search-btn">
+                Submit Message
+            </button>
+
+            <a href="about.html"
+            class="search-btn">
+                About Us
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    © 2026 SkyBook Flight Ticket Management System
+</footer>
+
+<script>
+
+function sendMessage(){
+
+    const name =
+    document.getElementById("name").value;
+
+    const email =
+    document.getElementById("email").value;
+
+    const message =
+    document.getElementById("message").value;
+
+    if(name === "" || email === "" || message === ""){
+
+        alert("Please complete all fields.");
+
+        return;
+    }
+
+    alert("Your message has been submitted successfully.");
+
+    document.getElementById("name").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("message").value = "";
+}
+
+</script>
+
+</body>
+</html>
