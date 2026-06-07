@@ -312,6 +312,28 @@ function requireLogin(page){
 }
 
 </script>
+
+<script>
+
+window.addEventListener("keydown", function(e){
+
+    if(
+        (e.metaKey || e.ctrlKey)
+        &&
+        e.shiftKey
+        &&
+        e.key.toLowerCase() === "r"
+    ){
+
+        localStorage.removeItem(
+        "isLoggedIn"
+        );
+
+    }
+
+});
+
+</script>
     
 </body>
 </html>
