@@ -200,6 +200,17 @@ localStorage.getItem("returnDate");
 document.getElementById("passengerDisplay").textContent =
 localStorage.getItem("passengers");
 
+const passengerCount =
+parseInt(passengers);
+
+const flightPrice =
+parseInt(
+price.replace("RM","")
+);
+
+const totalPrice =
+"RM" + (flightPrice * passengerCount);
+
 </script>
 
 <script>
@@ -224,9 +235,9 @@ function selectFlight(airline,time,price){
     );
 
     localStorage.setItem(
-    "selectedPrice",
-    price
-    );
+"selectedPrice",
+totalPrice
+);
 
     alert(
     "You are not logged in yet. Please login first."
@@ -249,9 +260,9 @@ function selectFlight(airline,time,price){
     );
 
     localStorage.setItem(
-    "selectedPrice",
-    price
-    );
+"selectedPrice",
+totalPrice
+);
 
     window.location.href =
     "payment.html";
