@@ -93,6 +93,42 @@
             <input type="date" id="returnDate">
         </div>
 
+        <div>
+
+    <label style="
+    font-weight:600;
+    display:block;
+    margin-bottom:6px;
+    ">
+        Passengers
+    </label>
+
+    <select id="passengers">
+
+        <option value="1">
+            1 Passenger
+        </option>
+
+        <option value="2">
+            2 Passengers
+        </option>
+
+        <option value="3">
+            3 Passengers
+        </option>
+
+        <option value="4">
+            4 Passengers
+        </option>
+
+        <option value="5">
+            5 Passengers
+        </option>
+
+    </select>
+
+</div>
+
         <div style="
         display:flex;
         align-items:flex-end;
@@ -203,11 +239,43 @@ function searchFlight(){
         returnDate
     );
 
+    localStorage.setItem(
+    "passengers",
+    passengers
+    );
+    
     window.location.href =
     "flight-results.html";
 
 }
 
+<script>
+
+// Tomorrow's date
+const tomorrow = new Date();
+
+tomorrow.setDate(
+tomorrow.getDate() + 1
+);
+
+const minDate =
+tomorrow.toISOString().split("T")[0];
+
+document.getElementById(
+"departureDate"
+).min = minDate;
+
+document.getElementById(
+"returnDate"
+).min = minDate;
+
+const passengers =
+document.getElementById(
+"passengers"
+).value;
+
+</script>
+    
 </script>
     
 </body>
