@@ -208,14 +208,35 @@ function selectFlight(airline,time,price){
 
     if(localStorage.getItem("isLoggedIn") !== "true"){
 
-        alert(
-        "You are not logged in yet. Please login first."
-        );
+    localStorage.setItem(
+    "redirectAfterLogin",
+    "payment.html"
+    );
 
-        window.location.href = "login.html";
+    localStorage.setItem(
+    "selectedAirline",
+    airline
+    );
 
-        return;
-    }
+    localStorage.setItem(
+    "selectedTime",
+    time
+    );
+
+    localStorage.setItem(
+    "selectedPrice",
+    price
+    );
+
+    alert(
+    "You are not logged in yet. Please login first."
+    );
+
+    window.location.href =
+    "login.html";
+
+    return;
+}
 
     localStorage.setItem(
     "selectedAirline",
