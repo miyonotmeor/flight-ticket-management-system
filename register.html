@@ -163,9 +163,34 @@ profileImage:
 "images/default-profile.jpg"
 
 };
+
+let users =
+JSON.parse(
+localStorage.getItem("users")
+) || [];
+
+const existingUser =
+users.find(function(u){
+
+return u.email === email;
+
+});
+
+if(existingUser){
+
+alert(
+"This email is already registered."
+);
+
+return;
+
+}
+
+users.push(user);
+
 localStorage.setItem(
-"user",
-JSON.stringify(user)
+"users",
+JSON.stringify(users)
 );
 
 alert(
