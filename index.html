@@ -351,14 +351,22 @@ window.addEventListener("keydown", function(e){
         e.key.toLowerCase() === "r"
     ){
 
-        localStorage.removeItem(
-        "isLoggedIn"
-        );
+        if(
+            localStorage.getItem("isLoggedIn")
+            ===
+            "true"
+        ){
 
-        localStorage.setItem(
-        "sessionExpired",
-        "true"
-        );
+            localStorage.setItem(
+            "sessionExpired",
+            "true"
+            );
+
+            localStorage.removeItem(
+            "isLoggedIn"
+            );
+
+        }
 
     }
 
@@ -380,17 +388,9 @@ window.onload = function(){
         "sessionExpired"
         );
 
-        localStorage.setItem(
-        "redirectAfterLogin",
-        "index.html"
-        );
-
         alert(
         "Your session has ended. Please login again."
         );
-
-        window.location.href =
-        "login.html";
 
     }
 
