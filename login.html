@@ -159,6 +159,26 @@ JSON.parse(
 localStorage.getItem("users")
 ) || [];
 
+const registeredEmail =
+users.find(function(u){
+
+    return u.email === email;
+
+});
+
+if(!registeredEmail){
+
+    alert(
+    "This email address is not registered yet. Please create an account first."
+    );
+
+    window.location.href =
+    "register.html";
+
+    return false;
+
+}
+
 const user =
 users.find(function(u){
 
@@ -170,7 +190,7 @@ users.find(function(u){
 if(!user){
 
     alert(
-    "Invalid email or password!"
+    "Incorrect password. Please try again."
     );
 
     return false;
