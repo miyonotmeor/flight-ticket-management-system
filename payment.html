@@ -117,22 +117,88 @@ margin-top:20px;
 
     <div class="form-group">
         <label>Card Holder Name</label>
-        <input type="text" id="cardName">
+        <input
+type="text"
+id="cardName"
+placeholder="John Doe"
+oninput="validateCardName()">
+
+<small
+id="cardNameHint"
+style="color:green;">
+Example: John Doe
+</small>
+
+<small
+id="cardNameError"
+style="color:red;display:none;">
+Card holder name can contain letters only.
+</small>
     </div>
 
     <div class="form-group">
         <label>Card Number</label>
-        <input type="text" id="cardNumber">
+        <input
+type="text"
+id="cardNumber"
+placeholder="1234 5678 9012 3456"
+maxlength="19"
+oninput="validateCardNumber()">
+
+<small
+id="cardNumberHint"
+style="color:green;">
+Example: 1234 5678 9012 3456
+</small>
+
+<small
+id="cardNumberError"
+style="color:red;display:none;">
+Card number must contain exactly 16 digits.
+</small>
     </div>
 
     <div class="form-group">
         <label>Expiry Date</label>
-        <input type="month" id="expiryDate">
-    </div>
+        <small
+style="color:green;">
+Select a future expiry date.
+</small>
+<label>Expiry Date</label>
+
+<input
+type="month"
+id="expiryDate">
+
+<small style="color:green;">
+Select a future expiry date.
+</small>
+
+<small
+id="expiryError"
+style="color:red;display:none;">
+Card expiry date must be in the future.
+</small>
 
     <div class="form-group">
         <label>CVV</label>
-        <input type="password" id="cvv">
+        <input
+type="password"
+id="cvv"
+placeholder="123"
+maxlength="3"
+oninput="validateCVV()">
+
+<small
+style="color:green;">
+Example: 123
+</small>
+
+<small
+id="cvvError"
+style="color:red;display:none;">
+CVV must contain exactly 3 digits.
+</small>
     </div>
 
 </div>
@@ -177,6 +243,63 @@ localStorage.getItem("selectedPrice") || "RM129";
 document.getElementById("priceDisplay").textContent =
 price;
 
+function validateCardName(){
+
+    const value =
+    document.getElementById(
+    "cardName"
+    ).value;
+
+    const valid =
+    /^[A-Za-z ]+$/.test(value);
+
+    document.getElementById(
+    "cardNameError"
+    ).style.display =
+    value === "" || valid
+    ? "none"
+    : "block";
+
+}
+
+function validateCardNumber(){
+
+    const value =
+    document.getElementById(
+    "cardNumber"
+    ).value.replace(/\s/g,'');
+
+    const valid =
+    /^\d{16}$/.test(value);
+
+    document.getElementById(
+    "cardNumberError"
+    ).style.display =
+    value === "" || valid
+    ? "none"
+    : "block";
+
+}
+
+function validateCVV(){
+
+    const value =
+    document.getElementById(
+    "cvv"
+    ).value;
+
+    const valid =
+    /^\d{3}$/.test(value);
+
+    document.getElementById(
+    "cvvError"
+    ).style.display =
+    value === "" || valid
+    ? "none"
+    : "block";
+
+}
+    
 function confirmPayment(){
 
     const cardName =
@@ -204,6 +327,56 @@ function confirmPayment(){
 
         return;
     }
+
+    if(
+!/^[A-Za-z ]+$/.test(cardName)
+){
+
+    alert(
+    "Card holder name is invalid."
+    );
+
+    return;
+}
+
+if(
+!/^\d{16}$/.test(
+cardNumber.replace(/\s/g,'')
+)
+){
+
+    alert(
+    "Card number must contain 16 digits."
+    );
+
+    return;
+}
+
+if(
+!/^\d{3}$/.test(cvv)
+){
+
+    alert(
+    "CVV must contain 3 digits."
+    );
+
+    return;
+}
+
+const expiry =
+new Date(expiryDate);
+
+const today =
+new Date();
+
+if(expiry <= today){
+
+    alert(
+    "Card expiry date must be in the future."
+    );
+
+    return;
+}
 
     let bookings =
     JSON.parse(
