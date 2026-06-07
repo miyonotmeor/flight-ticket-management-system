@@ -220,30 +220,6 @@ localStorage.getItem("isLoggedIn")
 ? "Active"
 : "Inactive";
 
-if(currentUser){
-
-document.getElementById(
-"currentUserName"
-).textContent =
-currentUser.fullName || "-";
-
-document.getElementById(
-"currentUserEmail"
-).textContent =
-currentUser.email || "-";
-
-document.getElementById(
-"currentUsername"
-).textContent =
-currentUser.username || "-";
-
-document.getElementById(
-"currentMemberSince"
-).textContent =
-currentUser.memberSince || "-";
-
-}
-
 const userList =
 document.getElementById(
 "userList"
