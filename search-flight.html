@@ -121,6 +121,40 @@ function searchFlight(){
 }
 
 </script>
+
+<script>
+
+window.addEventListener("keydown", function(e){
+
+    if(
+        (e.metaKey || e.ctrlKey)
+        &&
+        e.shiftKey
+        &&
+        e.key.toLowerCase() === "r"
+    ){
+
+        localStorage.removeItem(
+        "isLoggedIn"
+        );
+
+        localStorage.setItem(
+        "redirectAfterLogin",
+        "search-flight.html"
+        );
+
+        alert(
+        "Your session has ended. Please login again."
+        );
+
+        window.location.href =
+        "login.html";
+
+    }
+
+});
+
+</script>
     
 </body>
 </html>
