@@ -363,18 +363,32 @@ if(expiry < today){
 
     bookings.push({
 
-        airline:
-        localStorage.getItem("selectedAirline"),
+    bookingId:
+    "BK" + Date.now(),
 
-        departureDate:
-        localStorage.getItem("departureDate"),
+    airline:
+    localStorage.getItem("selectedAirline"),
 
-        totalAmount:
-        parseInt(
-        price.replace("RM","")
-        )
+    route:
+    localStorage.getItem("departureCity")
+    + " → " +
+    localStorage.getItem("destinationCity"),
 
-    });
+    departureDate:
+    localStorage.getItem("departureDate"),
+
+    time:
+    localStorage.getItem("selectedTime"),
+
+    passengers:
+    localStorage.getItem("passengers"),
+
+    totalAmount:
+    parseInt(
+    price.replace("RM","")
+    )
+
+});
 
     localStorage.setItem(
     "bookings",
