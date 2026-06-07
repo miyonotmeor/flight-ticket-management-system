@@ -136,12 +136,30 @@ function loginUser(){
     rememberUser();
 
     localStorage.setItem(
-    "isLoggedIn",
-    "true"
+"isLoggedIn",
+"true"
+);
+
+const redirectPage =
+localStorage.getItem(
+"redirectAfterLogin"
+);
+
+if(redirectPage){
+
+    localStorage.removeItem(
+    "redirectAfterLogin"
     );
 
     window.location.href =
+    redirectPage;
+
+}else{
+
+    window.location.href =
     "dashboard.html";
+
+}
 
     return false;
 
