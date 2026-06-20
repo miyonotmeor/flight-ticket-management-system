@@ -1,1 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="Logo.png">
+<link rel="stylesheet" href="style.css">
+<title>Developers - SkyBook</title>
+</head>
 
+<body>
+
+<header>
+
+    <a href="#"
+    onclick="goHome()"
+    class="logo"
+    style="text-decoration:none;color:white;">
+
+        ✈ SkyBook
+        <span>Flight Ticket Management System</span>
+
+    </a>
+
+    <nav>
+        <ul>
+
+            <li>
+                <a href="#"
+                onclick="checkLogin('dashboard.html')">
+                Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="#"
+                onclick="checkLogin('search-flight.html')">
+                Search Flight
+                </a>
+            </li>
+
+            <li>
+                <a href="#"
+                onclick="checkLogin('my-booking.html')">
+                My Booking
+                </a>
+            </li>
+
+            <li>
+                <a href="#"
+                onclick="checkLogin('profile.html')">
+                Profile
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+
+    <a href="about.html"
+    class="back-btn">
+        ← Back
+    </a>
+
+</header>
+
+<section class="login-section">
+
+<div class="booking-card">
+
+    <h1 style="
+    text-align:center;
+    color:#0d47a1;
+    margin-bottom:15px;">
+        Meet The Developers
+    </h1>
+
+    <div class="search-summary">
+
+        <h3>Project Information</h3>
+
+        <div class="summary-grid">
+
+            <div class="summary-item">
+                <span>Project</span>
+                <strong>
+                    SkyBook Flight Ticket Management System
+                </strong>
+            </div>
+
+            <div class="summary-item">
+                <span>Course</span>
+                <strong>
+                    CSC435 Object-Oriented Programming
+                </strong>
+            </div>
+
+            <div class="summary-item">
+                <span>University</span>
+                <strong>
+                    Universiti Teknologi MARA (UiTM)
+                </strong>
+            </div>
+
+            <div class="summary-item">
+                <span>Semester</span>
+                <strong>
+                    2025 / 2026
+                </strong>
+            </div>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <div style="
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+    ">
+
+        <div class="search-summary">
+
+            <h3>Project Leader</h3>
+
+            <div style="text-align:center;">
+
+                <img
+                src="images/default-profile.jpg"
+                alt="Developer"
+                style="
+                width:120px;
+                height:120px;
+                border-radius:50%;
+                object-fit:cover;
+                margin-bottom:15px;
+                ">
+
+                <h2>
+                    Muhammad Amirrul Mukminin
+                </h2>
+
+                <p>
+                    Student ID: 2023XXXXXX
+                </p>
+
+                <p>
+                    Front-End Developer
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="search-summary">
+
+            <h3>Team Member</h3>
+
+            <div style="text-align:center;">
+
+                <img
+                src="images/default-profile.jpg"
+                alt="Developer"
+                style="
+                width:120px;
+                height:120px;
+                border-radius:50%;
+                object-fit:cover;
+                margin-bottom:15px;
+                ">
+
+                <h2>
+                    Team Member Name
+                </h2>
+
+                <p>
+                    Student ID: 2023XXXXXX
+                </p>
+
+                <p>
+                    System Analyst
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <div class="search-summary">
+
+        <h3>Developer Contribution</h3>
+
+        <div class="summary-grid">
+
+            <div class="summary-item">
+                <span>Front-End</span>
+                <strong>
+                    HTML, CSS, JavaScript
+                </strong>
+            </div>
+
+            <div class="summary-item">
+                <span>User Interface</span>
+                <strong>
+                    Responsive Design
+                </strong>
+            </div>
+
+            <div class="summary-item">
+                <span>Database</span>
+                <strong>
+                    Local Storage
+                </strong>
+            </div>
+
+            <div class="summary-item">
+                <span>Documentation</span>
+                <strong>
+                    SRS & Testing
+                </strong>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="receipt-buttons"
+    style="margin-top:15px;">
+
+        <a href="about.html"
+        class="search-btn">
+            Back To About Us
+        </a>
+
+        <a href="contact.html"
+        class="search-btn">
+            Contact Support
+        </a>
+
+    </div>
+
+</div>
+
+</section>
+
+<footer>
+    © 2026 SkyBook Flight Ticket Management System
+</footer>
+
+<script>
+
+function checkLogin(page){
+
+    if(localStorage.getItem("isLoggedIn") === "true"){
+
+        window.location.href = page;
+
+    }else{
+
+        localStorage.setItem(
+        "redirectAfterLogin",
+        page
+        );
+
+        alert(
+        "You are not logged in yet. Please login first."
+        );
+
+        window.location.href =
+        "login.html";
+
+    }
+
+}
+
+function goHome(){
+
+    if(
+        localStorage.getItem("isLoggedIn")
+        ===
+        "true"
+    ){
+
+        window.location.href =
+        "dashboard.html";
+
+    }else{
+
+        window.location.href =
+        "index.html";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
